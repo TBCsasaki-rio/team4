@@ -1,0 +1,79 @@
+/* 全体 */
+body {
+	background-color: #ffffff; /* 背景色  */
+	text-align: center; /* 中央寄せ */
+    min-width: 900px; /* 最小幅 */
+}
+/* ヘッダー、ナビゲーションメニュー、フッター */
+header, nav, footer {
+	background-color: #efefef; /* 背景色 */
+	color: #000000; /* 文字色 */
+	padding-top: 5px; /* 内側余白(上) */
+	padding-bottom: 5px; /* 内側余白(下) */
+}
+/* ヘッダー、ナビゲーション内リンク */
+header a, nav a {
+	color: #000000;
+}
+/* ヘッダー内見出し */
+header h1 {
+	font-size: 20pt;
+	margin: 10px auto;
+}
+/* 仕切り線 */
+hr {
+	border-top: 2px dashed #efefef;
+}
+/* メイン */
+main {
+	background-color: #ffffff;
+	min-height: 50px;
+	padding: 20px;
+}
+/* 表線 */
+table, th, td {
+	border-collapse: collapse;
+	border: 1px solid #c0c0c0;
+}
+/* 表 */
+table {
+    margin: 5px auto;
+    min-width: 800px;
+}
+/* 表見出しセル */
+table th {
+	background: #efefef;
+	color: #000000;
+}
+/* 送信ボタン */
+button {
+	margin: 2px;
+	padding: 5px 20px;
+	background-color: #00CED1	;
+	color: #000000;
+	border: none;
+	width:150px;
+	cursor: pointer;
+	border-radius: 10px; /* 全ての角を30px丸める */
+}
+/* 送信ボタン(マウスオーバー時) */
+button:hover {
+	background-color: #00CED1	;
+	border-radius: 10px; /* 全ての角を30px丸める */
+}
+
+img{
+		position: absolute;
+	    right: 20px; /* 右から10px */
+	    bottom: 30px; /* 下から10px */
+	    width: 250px; /* サイズ調整 */
+}
+.open{
+	max-width: 200px;
+	white-space: normal;
+	overflow-wrap:break-word ;
+	word-break: break-all;
+	
+	padding: 8px;
+	text-align: justify;
+}
