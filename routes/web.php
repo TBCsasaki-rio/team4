@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AccountController;   // ログイン・会員登録・ログアウト
-
+use App\Http\Controllers\ProductController;
 //Route::get('/', function () {
 //    return view('welcome');
 //});
@@ -31,3 +31,10 @@ Route::post('/register', [AccountController::class, 'createUser']);
 // ================================================
 // ログアウト処理
 Route::post('/logout', [AccountController::class, 'logout'])->name('logout');
+
+// 商品：一覧表示
+Route::get('/products', [ProductController::class, 'products']);
+// 商品：単体表示
+Route::get('/products/{id}', [ProductController::class, 'details']);
+// 商品：検索
+Route::post('/products/search', [ProductController::class, 'search']);
