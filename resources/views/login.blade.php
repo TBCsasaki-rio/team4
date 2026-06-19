@@ -1,4 +1,4 @@
-<?php require '../header.php'; ?>
+@include('header')
 
 <body>
     <main>
@@ -30,6 +30,6 @@
             @endif
         </form>
 
-        <a href="{{ route('accountform') }}">新規会員登録の方はこちら</a>
+        <a href="{{ route('register') }}">新規会員登録の方はこちら</a>
     </main>
 </body>
