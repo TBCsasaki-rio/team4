@@ -6,23 +6,18 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::table('product_images', function (Blueprint $table) {
             $table->string('url');
+            $table->boolean('is_main')->default(false);
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
-        Schema::table('product_images_', function (Blueprint $table) {
-            $table->dropColumn('url');
+        Schema::table('product_images', function (Blueprint $table) {
+            $table->dropColumn(['url', 'is_main']);
         });
     }
 };
