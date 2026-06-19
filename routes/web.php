@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AccountController;   // ログイン・会員登録・ログアウト
 
+<<<<<<< HEAD
 //Route::get('/', function () {
 //    return view('welcome');
 //});
@@ -31,3 +33,10 @@ Route::post('/register', [AccountController::class, 'createUser']);
 // ================================================
 // ログアウト処理
 Route::post('/logout', [AccountController::class, 'logout'])->name('logout');
+=======
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/cart',[CartController::class, 'index']);
+>>>>>>> 9db4db2d5dbcc32853ef5cdf23548f95a5aa1411
