@@ -67,5 +67,26 @@ class OrderController extends Controller
             DB::rollBack();
             return back()->withErrors(['error' => '注文処理に失敗しました']);
         }
+
     }
+
+
+    
+public function index()
+{
+    $user_id = 1;
+
+    $cartItems = DB::table('cart_items as c')
+        ->join('products as p', 'c.product_id', '=', 'p.id')
+        ->select('c.quantity', 'p.price')
+        ->where('c.user_id', $user_id)
+        ->get();
+
+    $total = $cartItems->sum(function ($item) {
+        return $item->price * $item->quantity;
+    });
+
+    return view('order', compact('total'));
+}
+
 }
