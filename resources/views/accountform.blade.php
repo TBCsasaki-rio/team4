@@ -1,15 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>会員登録</title>
-<link rel="stylesheet" type="text/css" href="/css/style.css">
-</head>
+<?php require '../header.php'; ?>
 <body>
-    <header>
-        <h1>SayYou</h1>
-    </header>
-
     <main>
         <h3>会員新規登録</h3>
 

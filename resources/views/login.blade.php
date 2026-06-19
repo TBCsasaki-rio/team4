@@ -1,17 +1,6 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="UTF-8">
-    <title>ログイン</title>
-    <link rel="stylesheet" href="/css/style.css">
-</head>
+<?php require '../header.php'; ?>
 
 <body>
-    <header>
-        <h1>Say You!</h1>
-    </header>
-
     <main>
         <form action="{{ route('login') }}" method="post">
             
