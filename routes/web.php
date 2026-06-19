@@ -1,8 +1,14 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AccountController;   // ログイン・会員登録・ログアウト
+<<<<<<< HEAD
 use App\Http\Controllers\ProductController;
+=======
+
+<<<<<<< HEAD
+>>>>>>> eb3e586bbd56b821e97774f1958e9dea63bcb5b0
 //Route::get('/', function () {
 //    return view('welcome');
 //});
@@ -31,6 +37,7 @@ Route::post('/register', [AccountController::class, 'createUser']);
 // ================================================
 // ログアウト処理
 Route::post('/logout', [AccountController::class, 'logout'])->name('logout');
+<<<<<<< HEAD
 
 // 商品：一覧表示
 Route::get('/products', [ProductController::class, 'products']);
@@ -38,3 +45,12 @@ Route::get('/products', [ProductController::class, 'products']);
 Route::get('/products/{id}', [ProductController::class, 'details']);
 // 商品：検索
 Route::post('/products/search', [ProductController::class, 'search']);
+=======
+=======
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/cart',[CartController::class, 'index']);
+>>>>>>> 9db4db2d5dbcc32853ef5cdf23548f95a5aa1411
+>>>>>>> eb3e586bbd56b821e97774f1958e9dea63bcb5b0
