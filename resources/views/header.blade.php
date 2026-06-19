@@ -1,8 +1,9 @@
 
-<header>
-    <h1><a href="/items">SayYOU</a></h1>
-    <!-- 本番はこれ -->
-    <!--  account->name さんがログイン中 -->
-    <!-- デバッグ用 -->ログイン中
-    <a href="/logout">ログアウト</a>
-</header>
+<!DOCTYPE html>
+<html lang = "ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>共通header</title>
+        <h1>SAY YOU!!ユージーン店</h1>
+    </head>
+

@@ -22,13 +22,11 @@ Route::get('/register', [AccountController::class, 'signUp'])->name('register');
 // 新規登録処理
 Route::post('/register', [AccountController::class, 'createUser']);
 
-
 // ================================================
 // ログアウト機能
 // ================================================
 // ログアウト処理
 Route::post('/logout', [AccountController::class, 'logout'])->name('logout');
-
 
 // 商品：一覧表示
 Route::get('/products', [ProductController::class, 'products']);
