@@ -10,4 +10,6 @@ Route::get('/order', [OrderController::class, 'index']);
 
 Route::post('/order', [OrderController::class, 'order']);
 
-Route::get('/orderComp', fn() => view('orderComp'));
+Route::get('/ordercomp', [OrderController::class, 'ordercomp']);
+
+Route::get('/products', fn() => view('products'));

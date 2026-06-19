@@ -89,4 +89,13 @@ public function index()
     return view('order', compact('total'));
 }
 
+// ✅ 注文完了画面（これが追加部分）
+public function orderComp()
+{
+    $orderNumber = session('orderNumber');
+
+    return view('orderComp', compact('orderNumber'));
+}
+
+
 }
