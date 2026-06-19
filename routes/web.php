@@ -8,3 +8,7 @@ Route::get('/', function () {
 Route::get('/account', function () {
     return view('account_form');
 });
+Route::get('/customer', function () {
+    return view('customer_form');
+});
+
