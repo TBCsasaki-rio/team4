@@ -28,8 +28,8 @@
         @foreach ($categories as $category)
             <a href="/products?categoryId={{ $category['id'] }}"
                style="margin-right: 5px;">
-               {{ $category['
-            </a>name'] }}
+               {{ $category['name'] }}
+            </a>
         @endforeach
         <a href="/cart" style="padding-left: 10px;">カートを見る</a>
     </nav>

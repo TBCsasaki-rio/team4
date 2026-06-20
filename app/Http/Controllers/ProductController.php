@@ -24,8 +24,8 @@ class ProductController extends Controller
         } else {
             $products = Product::where('category_id', $categoryId)->get();
         }
-
-        $categories = Category::get();
+        // カテゴリーが未登録なら[]を返す
+        $categories = Category::get() ?? collect();
 
         return view('products', compact('products','categories'));
     }
@@ -40,8 +40,9 @@ class ProductController extends Controller
             return redirect('/products');
         }
 
+        $categories = Category::get() ?? collect();
         return view('productDetail')
-        ->with('products', $product);
+        ->with('products', $product)->with('cateogries', $categories);
     }
 
     // 1. 商品検索：keyword, maxprice
