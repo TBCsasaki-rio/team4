@@ -24,11 +24,7 @@ class ProductController extends Controller
         } else {
             $products = Product::with('mainImage')->where('category_id', $categoryId)->get();
         }
-        
-        // カテゴリーが未登録なら[]を返す
-        $categories = Category::get() ?? collect();
-
-        return view('products', compact('products','categories'));
+        return view('products', compact('products'));
     }
 
     // 商品詳細
@@ -65,10 +61,7 @@ class ProductController extends Controller
                         ->get();
         }
         
-        $categories = Category::get();
-
         return view('products')
-            ->with('products', $searchedProducts)
-            ->with('categories', $categories);
+            ->with('products', $searchedProducts);
     }
 }
