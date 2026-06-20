@@ -19,15 +19,17 @@ class ProductController extends Controller
 
         $categoryId = $request['categoryId'];
         
-        if ($categoryId === null){
-            $products = Product::get();
-        } else {
-            $products = Product::where('category_id', $categoryId)->get();
-        }
+        // if ($categoryId === null){
+        //     $products = Product::get();
+        // } else {
+        //     $products = Product::where('category_id', $categoryId)->get();
+        // }
+        $product = Product::find(1);
         // カテゴリーが未登録なら[]を返す
         $categories = Category::get() ?? collect();
 
-        return view('products', compact('products','categories'));
+        return view('products', compact('product','categories'));
+        // return view('products', compact('products','categories'));
     }
 
     // 商品詳細
@@ -35,14 +37,12 @@ class ProductController extends Controller
 
         $product = Product::find($id);
         if ($product === null){
-            // 商品がなかったとき用のViewに遷移させる
             echo ('すみません。商品が見つかりませんでした。');
             return redirect('/products');
         }
 
-        $categories = Category::get() ?? collect();
-        return view('productDetail')
-        ->with('products', $product)->with('cateogries', $categories);
+        return view('productDetail', compact('product'));
+
     }
 
     // 1. 商品検索：keyword, maxprice

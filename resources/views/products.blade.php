@@ -35,37 +35,17 @@
     </nav>
 
     <main>
-        <table>
-            <tr>
-                <th>NO</th>
-                <th>商品名</th>
-                <th>値段</th>
-                <th></th>
-            </tr>
-
-            @foreach ($products as $product)
-                <tr>
-                    <td>{{ $product['id'] }}</td>
-
-                    <td>
-                        <a href="/products/{{ $product['id'] }}">
-                            {{ $product['name'] }}
-                        </a>
-                    </td>
-
-                    <td>{{ $product['price'] }}円</td>
-
-                    <td>
-                        <form action="/cart_add" method="post">
-                            @csrf
-                            <input type="hidden" name="productId" value="{{ $product['id'] }}">
-                            <button>カートに追加</button>
-                        </form>
-                    </td>
-                </tr>
-            @endforeach
-
-        </table>
+        <div class="product-list" id="product-list">
+            <div class="product">
+                <a href="/products/{{$product['id']}}">
+                    <img src="/image/products/{{$product['id']}}/4KTV_main.png" alt="商品画像" class="product-image">
+                </a>
+                <div class="product-details">
+                    <h2>{{$product['name']}}</h2>
+                    <p>{{$product['price']}}</p>
+                </div>
+            </div>
+        </div>
     </main>
 
     <hr>
