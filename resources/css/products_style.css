@@ -1,0 +1,12 @@
+body {
+    /* FlexBoxを指定 */
+    display: flex;
+    /* コンテナ内のアイテムを並べる方向を指定 */
+    flex-direction: column;
+    /* ビューポート（ブラウザの表示領域）に応じた相対単位 */
+    min-height: 100vh;
+    background-color: #EFF0F7;
+    /* ブロック内の要素の配置指定 */
+    text-align: center;
+    max-width: 1400vh;
+}

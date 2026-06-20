@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <title>商品一覧</title>
-<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/products_style.css">
 </head>
 
 <body>
