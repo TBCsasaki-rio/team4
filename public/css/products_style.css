@@ -1,0 +1,66 @@
+body {
+    /* FlexBoxを指定 */
+    display: flex;
+    /* コンテナ内のアイテムを並べる方向を指定 */
+    flex-direction: column;
+    /* ビューポート（ブラウザの表示領域）に応じた相対単位 */
+    min-height: 100vh;
+    background-color: #EFF0F7;
+    /* ブロック内の要素の配置指定 */
+    text-align: center;
+    max-width: 1400vh;
+}
+
+.categories {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+}
+
+
+main {
+    /* スペースをどう割り振りするかの設定らしい、記事を参照して */
+    /* flex-grow: 1; と同じ意味*/
+    flex: 1;
+    background-color: #000;
+    min-height: 50px;
+    /* 要素同士の間隔 */
+    padding: 20px;
+    /* 要素のサイズ(width,height)の調整にpaddingとborderを考慮させるか */
+    /* border-box: paddingとborderを幅と高さに含める */
+    box-sizing: border-box;
+}
+
+.product-list {
+    display: flex;
+    /* 複数行に折り返す設定 */
+    flex-wrap: wrap;
+    /* ボックス内要素の配置設定（右寄せやセンタリングなど） */
+    justify-content: center;
+    /* 内側の余白 */
+    padding: 10px;
+    /* コンテナ内の要素間の隙間 */
+    gap: 10px;
+}
+
+.product {
+    /* 試しに無しでやってみる */
+    /* margin: 10px; */
+    text-align: center;
+    width: 200px;
+    box-sizing: border-box;
+    background: #fafafa;
+    border: 1px soild #e0e0e0;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+.product-image {
+    /* 何に対しての割合？ */
+    max-width: 100%;
+    height: 150px;
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+}

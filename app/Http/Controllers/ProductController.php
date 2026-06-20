@@ -20,12 +20,11 @@ class ProductController extends Controller
         $categoryId = $request['categoryId'];
         
         if ($categoryId === null){
-            $products = Product::get();
+            $products = Product::with('mainImage')->get();
         } else {
-            $products = Product::where('category_id', $categoryId)->get();
+            $products = Product::with('mainImage')->where('category_id', $categoryId)->get();
         }
-
-        $products = Product::with('mainImage')->get();
+        
         // カテゴリーが未登録なら[]を返す
         $categories = Category::get() ?? collect();
 

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-    
+
 <head>
-<meta charset="UTF-8">
-<title>商品一覧</title>
-<link rel="stylesheet" href="/css/products_style.css">
+    <meta charset="UTF-8">
+    <title>商品一覧</title>
+    <link rel="stylesheet" href="/css/products_style.css">
 </head>
 
 <body>
@@ -22,15 +22,22 @@
             <button>検索</button>
         </form>
 
-        <a href="/products.php">全商品</a>
-
         <!-- カテゴリ一覧 -->
-        @foreach ($categories as $category)
-            <a href="/products?categoryId={{ $category['id'] }}"
-               style="margin-right: 5px;">
-               {{ $category['name'] }}
-            </a>
-        @endforeach
+        <div class="categories">
+            <div class="category">
+                <a href="/products">全商品</a>
+            </div>
+            
+            @foreach ($categories as $category)
+            <div class="category">
+                <a href="/products?categoryId={{ $category['id'] }}"
+                    style="margin-right: 5px;">
+                    {{ $category['name'] }}
+                </a>
+            </div>
+            @endforeach
+        </div>
+    
         <a href="/cart" style="padding-left: 10px;">カートを見る</a>
     </nav>
 
@@ -39,11 +46,14 @@
             @foreach($products as $product)
             <div class="product">
                 <a href="/products/{{$product['id']}}">
-                    <img src="/image/products/{{$product['id']}}/{{ $product->mainImage->url }}" alt="商品画像" class="product-image">
+                    <img
+                        src="/image/products/{{$product['id']}}/{{ $product->mainImage->url }}"
+                        alt="商品画像"
+                        class="product-image">
                 </a>
                 <div class="product-details">
                     <h2>{{$product['name']}}</h2>
-                    <p>{{$product['price']}}</p>
+                    <p>{{$product['price']}}円</p>
                 </div>
             </div>
             @endforeach
@@ -56,4 +66,5 @@
     @include('footer')
 
 </body>
+
 </html>
