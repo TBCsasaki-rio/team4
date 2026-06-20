@@ -14,10 +14,10 @@ class ProductController extends Controller
 // Route::get('/products/search', [ProductController::class], 'search');
 // Route::get('/products/{id}', [ProductController::class], 'detail');
 
+    // 商品一覧表示・カテゴリーごとに表示
     public function products(Request $request){
 
         $categoryId = $request['categoryId'];
-        echo $categoryId;
         
         if ($categoryId === null){
             $products = Product::get();
@@ -30,29 +30,27 @@ class ProductController extends Controller
         return view('products', compact('products','categories'));
     }
 
+    // 商品詳細
     public function details($id){
-        // view側が配列で処理しているため、result配列を使用
-        $products = array();
-        array_push($products,Product::find($id));
-        
-        $categories = Category::get();
-  
-        if ($products === null || count($products) === 0){
-            $products = Product::get();
+
+        $product = Product::find($id);
+        if ($product === null){
+            // 商品がなかったとき用のViewに遷移させる
+            echo ('すみません。商品が見つかりませんでした。');
+            return redirect('/products');
         }
 
-        return view('/products')
-        ->with('products', $products)
-        ->with('categories',$categories);
+        return view('productDetail')
+        ->with('products', $product);
     }
 
+    // 1. 商品検索：keyword, maxprice
+    // 2. 対象商品を一覧表示
     public function search(Request $request){
 
         $keyword = $request->input('keyword',null);
         echo $keyword;
         $maxprice = $request['maxprice'];
-        // $maxprice = $request->input('maxprice');
-        echo $maxprice;
 
         if ($keyword === null and $maxprice === null){
             $searchedProducts = Product::get();
