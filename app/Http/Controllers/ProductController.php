@@ -19,17 +19,17 @@ class ProductController extends Controller
 
         $categoryId = $request['categoryId'];
         
-        // if ($categoryId === null){
-        //     $products = Product::get();
-        // } else {
-        //     $products = Product::where('category_id', $categoryId)->get();
-        // }
-        $product = Product::find(1);
+        if ($categoryId === null){
+            $products = Product::get();
+        } else {
+            $products = Product::where('category_id', $categoryId)->get();
+        }
+
+        $products = Product::with('mainImage')->get();
         // カテゴリーが未登録なら[]を返す
         $categories = Category::get() ?? collect();
 
-        return view('products', compact('product','categories'));
-        // return view('products', compact('products','categories'));
+        return view('products', compact('products','categories'));
     }
 
     // 商品詳細

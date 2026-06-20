@@ -36,15 +36,17 @@
 
     <main>
         <div class="product-list" id="product-list">
+            @foreach($products as $product)
             <div class="product">
                 <a href="/products/{{$product['id']}}">
-                    <img src="/image/products/{{$product['id']}}/4KTV_main.png" alt="商品画像" class="product-image">
+                    <img src="/image/products/{{$product['id']}}/{{ $product->mainImage->url }}" alt="商品画像" class="product-image">
                 </a>
                 <div class="product-details">
                     <h2>{{$product['name']}}</h2>
                     <p>{{$product['price']}}</p>
                 </div>
             </div>
+            @endforeach
         </div>
     </main>
 
