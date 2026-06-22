@@ -1,10 +1,10 @@
-<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+<head>
+    <meta charset="UTF-8">
+    <title>お客様情報入力</title>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
+
 <body>
-
-
-    <hr>
-
     <main>
         <h1>
             <img src="{{ asset('images/order.jpg') }}" alt="orderLogo" style="max-width: 250px; height:auto;">

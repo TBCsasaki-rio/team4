@@ -1,4 +1,6 @@
 <head>
+    <meta charset="UTF-8">
+    <title>ログイン</title>
     <link rel="stylesheet" href="{{ asset('resources/css/style.css') }}">
 </head>
 
