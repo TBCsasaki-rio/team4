@@ -68,3 +68,4 @@
     <hr>
 
 </body>
+@include('footer')
