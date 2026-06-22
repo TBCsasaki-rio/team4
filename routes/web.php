@@ -29,11 +29,9 @@ Route::post('/register', [AccountController::class, 'createUser']);
 // ログアウト処理
 Route::post('/logout', [AccountController::class, 'logout'])->name('logout');
 
-// 商品：一覧表示
+// 商品：
 Route::get('/products', [ProductController::class, 'products']);
-// 商品：単体表示
 Route::get('/products/{id}', [ProductController::class, 'details']);
-// 商品：検索
 Route::post('/products/search', [ProductController::class, 'search']);
 
 // カート機能
@@ -42,4 +40,3 @@ Route::get('/cart',[CartController::class, 'index']);
 // オーダー機能
 Route::get('/ordercomp', [OrderController::class, 'ordercomp']);
 
-Route::get('/products', fn() => view('products'));
