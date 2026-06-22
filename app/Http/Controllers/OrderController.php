@@ -67,7 +67,7 @@ class OrderController extends Controller
             DB::rollBack();
             return back()->withErrors(['error' => '注文処理に失敗しました']);
         }
-
+        
     }
 
 

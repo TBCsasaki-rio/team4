@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
+use App\Http\View\Composers\HeaderComposer;
+
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +22,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // header ビューがレンダリングされる際に HeaderComposer を実行
+        View::composer('header', HeaderComposer::class);
     }
 }
