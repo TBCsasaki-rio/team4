@@ -1,7 +1,9 @@
 <?php require '../header.php'; ?>
 <body>
     <main>
-        <h3>会員新規登録</h3>
+        <h1>
+            <img src="{{ asset('images/newAccount.jpg') }}" alt="newAccountLogo" style="max-width: 250px; height:auto;">
+        </h1>
 
         <form action="{{ route('register') }}" method="post">
 
@@ -16,27 +18,27 @@
                 </ul>
             @endif
 
-            <table border="1">
+            <table>
                 <tr>
                     <th>お名前</th>
                     <td>
-                        <input type="text" name="name" value="{{ $name }}">
+                        <input type="text" name="name" placeholder="ユーザ名" value="{{ $name }}">
                     </td>
                 </tr>
                 <tr>
                     <th>パスワード</th>
                     <td>
-                        <input type="password" name="password">
+                        <input type="password" name="password" placeholder="パスワード">
                     </td>
                 </tr>
             </table>
 
+            <br>
             <button>登録</button>
-        </form>
+         </form>   
+        
+         <a href="{{ route('login') }}">ログイン画面に戻る</a>
+            
     </main>
-
     <hr>
-
-
 </body>
-</html>

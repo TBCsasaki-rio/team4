@@ -114,7 +114,7 @@ class AccountController extends Controller
             ];
 
             // 入力画面に戻る
-            return view('register', $data);
+            return view('login', $data);
         }
 
         // データベースに登録
