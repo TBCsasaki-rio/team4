@@ -15,6 +15,7 @@
         }
 
     </style>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 
 <header>
@@ -45,4 +46,3 @@
 
         <a href="/cart" style="padding-left: 10px;">カートを見る</a>
 </header>
->>>>>>> 24423653c1ac3ece16a5887b7718ba50ce93f793

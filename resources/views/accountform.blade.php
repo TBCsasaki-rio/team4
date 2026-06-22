@@ -1,5 +1,3 @@
-@include('header')
-
 <body>
     <main>
         <h1>

@@ -1,4 +1,6 @@
-@include('header')
+<head>
+    <link rel="stylesheet" href="{{ asset('resources/css/style.css') }}">
+</head>
 
 <body>
     <main>
@@ -35,6 +37,6 @@
 
         <br>
         <a href="{{ route('register') }}">新規会員登録の方はこちら</a>
-    </main>
+    </main>   
 </body>
-</html>
+@include('footer')
