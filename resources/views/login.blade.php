@@ -1,4 +1,4 @@
-<?php require '../header.php'; ?>
+@include('header')
 
 <body>
     <main>

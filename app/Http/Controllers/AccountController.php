@@ -67,7 +67,7 @@ class AccountController extends Controller
         $request->session()->regenerate();
 
         // ログイン後、商品一覧画面に遷移
-        return redirect()->route('products');
+        return redirect('/products');
     }
 
 

@@ -1,4 +1,5 @@
-<?php require '../header.php'; ?>
+@include('header')
+
 <body>
     <main>
         <h1>
@@ -6,9 +7,7 @@
         </h1>
 
         <form action="{{ route('register') }}" method="post">
-
             @csrf
-
             <!-- エラー表示 -->
             @if (!empty($errorList))
                 <ul class="error" style="color: red;">
