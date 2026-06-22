@@ -19,7 +19,7 @@ class CartController extends Controller
             $total += $item['price'] * $item['quantity'];
         }
  
-        return view('cart.index', compact('cart', 'total'));
+        return view('cart', compact('cart', 'total'));
     }
  
     // カートに商品を追加
@@ -42,7 +42,7 @@ class CartController extends Controller
         }
  
         session()->put('cart', $cart);
-        return redirect()->route('cart.index')->with('success', 'カートに商品を追加しました！');
+        return redirect('/cart')->with('success', 'カートに商品を追加しました！');
     }
  
     // カートから商品を削除
@@ -55,6 +55,6 @@ class CartController extends Controller
             session()->put('cart', $cart);
         }
  
-        return redirect()->route('cart.index')->with('success', 'カートから商品を削除しました。');
+        return redirect('/cart')->with('success', 'カートから商品を削除しました。');
     }
 }

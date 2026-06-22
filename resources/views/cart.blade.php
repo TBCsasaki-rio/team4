@@ -21,7 +21,7 @@
         <div class="card p-5 text-center">
             <p class="fs-5 text-muted">カートは空です。</p>
             <div class="mt-3">
-                <a href="/" class="btn btn-primary">ショッピングを続ける</a>
+                <a href="/porducts" class="btn btn-primary">ショッピングを続ける</a>
             </div>
         </div>
     @else
@@ -56,7 +56,7 @@
 
             <div class="d-flex justify-content-between align-items-center mt-4">
                 <div>
-                    <a href="/" class="btn btn-outline-secondary">買い物を続ける</a>
+                    <a href="/products" class="btn btn-outline-secondary">買い物を続ける</a>
                 </div>
                 <div class="text-end">
                     <h3 class="mb-3">合計金額: <span class="text-danger">{{ number_format($total) }}円</span></h3>
