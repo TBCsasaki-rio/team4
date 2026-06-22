@@ -39,3 +39,14 @@ main {
     display: flex;
     justify-content: center; /* 左右の中央揃え */
 }
+
+/* 商品一覧画面の商品一覧の枠組み */
+.main-content {
+    box-shadow: 0 0px 0px rgba(255, 255, 255, 0.8); /* 軽い影（立体感） */
+
+}
+
+/* 一つの商品の枠組み */
+.product {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* 軽い影（立体感） */
+}

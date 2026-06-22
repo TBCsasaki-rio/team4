@@ -85,5 +85,3 @@
     @include('footer')
 
 </body>
-
-@include('footer')
