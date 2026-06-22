@@ -1,6 +1,8 @@
 <body>
     <main>
-        <h1>新規会員登録</h1>
+        <h1>
+            <img src="{{ asset('images/newAccount.jpg') }}" alt="newAccountLogo" style="max-width: 250px; height:auto;">
+        </h1>
 
         <form action="{{ route('register') }}" method="post">
 
