@@ -42,3 +42,4 @@ Route::get('/cart',[CartController::class, 'index']);
 // オーダー機能
 Route::get('/order', [OrderController::class, 'index']);
 Route::get('/ordercomp', [OrderController::class, 'ordercomp']);
+
