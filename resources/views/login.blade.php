@@ -8,11 +8,8 @@
 </head>
 
 <body>
-    <header>
-        <h1>Say You!</h1>
-    </header>
-
     <main>
+        <h1>Say You!!</h1>
         <form action="{{ route('login') }}" method="post">
             
             @csrf
@@ -41,6 +38,8 @@
             @endif
         </form>
 
-        <a href="{{ route('accountform') }}">新規会員登録の方はこちら</a>
+        <br>
+        <a href="{{ route('register') }}">新規会員登録の方はこちら</a>
     </main>
 </body>
+</html>
