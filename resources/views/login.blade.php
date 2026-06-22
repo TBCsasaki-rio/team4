@@ -26,10 +26,10 @@
                     </tr>
                 </table>
 
-                <br>
-                <button>ログイン</button>
+                <div class="button">
+                    <button type="submit">ログイン</button>
+                </div>
 
-                <br>
                 @if (!empty($errorList))
                     <ul style="color:red;">
                         @foreach ($errorList as $error)
@@ -39,8 +39,10 @@
                 @endif
             </form>
 
-            <br>
-            <a href="{{ route('register') }}">新規会員登録の方はこちら</a>
+            <div style="text-align: center; margin-top: 20px;">
+                <a href="{{ route('register') }}">新規会員登録の方はこちら</a>
+            </div>
+            
         </main>   
         @include('footer')
     </div>

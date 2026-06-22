@@ -20,3 +20,15 @@ main {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 軽い影（立体感） */
     box-sizing: border-box;
 }
+
+/* buttonの装飾 */
+.button {
+    display: flex;
+    justify-content: center; /* 左右の中央揃え */
+    margin-top: 20px;       /* 上に少し余白を作る */
+}
+/* ボタン自体の見た目も整える場合 */
+.button button {
+    padding: 6px 20px;
+    cursor: pointer;
+}
