@@ -32,3 +32,9 @@ main {
     padding: 6px 20px;
     cursor: pointer;
 }
+
+/* footerの中央揃え */
+.footer {
+    display: flex;
+    justify-content: center; /* 左右の中央揃え */
+}
