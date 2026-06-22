@@ -11,6 +11,50 @@ body {
     max-width: 1400vh;
 }
 
+/* ヘッダー以外の全体を覆うflexBox
+サイドバーとmainコンテンツが属する */
+.layout-wrapper {
+    display: flex;
+    gap: 30px;
+}
+
+/* サイドバー */
+.sidebar {
+    width: 250px;
+    /* 親要素がはみ出た場合の縮小設定 */
+    flex-shrink: 0;
+}
+
+/* 広告 */
+.banner-area {
+    /* バーナーと絞り込みエリアとの間隔 */
+    margin-bottom: 30px;
+}
+
+.banner-area a {
+    display: block;
+    margin-bottom: 15px;
+    /* 角を丸くする */
+    border-radius: 4px;
+    /* boxからはみ出た場合の表示設定:非表示 */
+    overflow: hidden;
+    /* boxの影 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.main-content {
+    flex-grow: 1;
+}
+.content-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.sort-select {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
 .categories {
     display: flex;
     flex-direction: row;
@@ -23,7 +67,7 @@ main {
     /* スペースをどう割り振りするかの設定らしい、記事を参照して */
     /* flex-grow: 1; と同じ意味*/
     flex: 1;
-    background-color: #000;
+    background-color: #EFF0F7;
     min-height: 50px;
     /* 要素同士の間隔 */
     padding: 20px;
@@ -37,7 +81,7 @@ main {
     /* 複数行に折り返す設定 */
     flex-wrap: wrap;
     /* ボックス内要素の配置設定（右寄せやセンタリングなど） */
-    justify-content: center;
+    justify-content: space-between;
     /* 内側の余白 */
     padding: 10px;
     /* コンテナ内の要素間の隙間 */
