@@ -1,0 +1,48 @@
+body {
+    /* FlexBoxを指定 */
+    display: flex;
+    /* コンテナ内のアイテムを並べる方向を指定 */
+    flex-direction: column;
+    /* ビューポート（ブラウザの表示領域）に応じた相対単位 */
+    min-height: 100vh;
+    background-color: #EFF0F7;
+    /* ブロック内の要素の配置指定 */
+    text-align: center;
+    max-width: 1400vh;
+}
+
+/* ヘッダー以外の全体を覆うflexBox
+サイドバーとmainコンテンツが属する */
+.layout-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+.categories {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+}
+
+.product {
+    /* 試しに無しでやってみる */
+    /* margin: 10px; */
+    text-align: center;
+    width: 200px;
+    box-sizing: border-box;
+    background: #fafafa;
+    border: 1px soild #e0e0e0;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+.product-image {
+    /* 何に対しての割合？ */
+    max-width: 100%;
+    height: 150px;
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+}

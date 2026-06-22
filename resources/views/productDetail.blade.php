@@ -16,35 +16,22 @@
 
     <div class="layout-wrapper">
 
-        <main class="main-content">
-
-            <div class="content-header">
-                <div>対象商品数：<strong>120</strong> アイテム</div>
-                <select class="sort-select">
-                    <option>新着順</option>
-                    <option>価格が安い順</option>
-                    <option>価格が高い順</option>
-                </select>
+        <div class="product">
+            <div class="product-img-wrapper">
+                <a href="/products/{{$product['id']}}">
+                    <img
+                        src="/image/products/{{$product['id']}}/{{ $product->mainImage->url }}"
+                        alt="商品画像"
+                        class="product-image">
+                </a>
             </div>
-
-            <div class="product-list" id="product-list">
-                @foreach($products as $product)
-                <div class="product">
-                    <a href="/products/{{$product['id']}}">
-                        <img
-                            src="/image/products/{{$product['id']}}/{{ $product->mainImage->url }}"
-                            alt="商品画像"
-                            class="product-image">
-                    </a>
-                    <div class="product-details">
-                        <h2>{{$product['name']}}</h2>
-                        <p>{{$product['price']}}円</p>
-                    </div>
-                </div>
-                @endforeach
+            <div class="product-details">
+                <h2>{{$product['name']}}</h2>
+                <p>{{$product['price']}}円</p>
             </div>
-        </main>
-        
+        </div>
+
+
     </div>
 
     <hr>
@@ -53,4 +40,3 @@
     @include('footer')
 
 </body>
-@include('footer')
