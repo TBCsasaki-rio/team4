@@ -2,6 +2,9 @@
 
 <body>
     <main>
+        <h1>
+            <img src="{{ asset('images/login.jpg') }}" alt="loginLogo" style="max-width: 250px; height:auto;">
+        </h1>
         <form action="{{ route('login') }}" method="post">
             
             @csrf
@@ -30,6 +33,8 @@
             @endif
         </form>
 
+        <br>
         <a href="{{ route('register') }}">新規会員登録の方はこちら</a>
     </main>
 </body>
+</html>

@@ -6,7 +6,9 @@
     <hr>
 
     <main>
-        <h3>ご注文商品</h3>
+        <h1>
+            <img src="{{ asset('images/order.jpg') }}" alt="orderLogo" style="max-width: 250px; height:auto;">
+        </h1>
 
 
         <hr>
