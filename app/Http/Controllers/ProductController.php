@@ -92,41 +92,21 @@ class ProductController extends Controller
             $parsed[] = ['minprice' => $minprice, 'maxprice' => $maxprice];
         }
 
-        // $query = Product::query();
-        // $query->where(function ($q) use ($parsed) {
-        //     foreach ($parsed as $range){
-        //         if ($range['maxprice'] === null){
-        //             $q->orWhere('price', '>')
-        //         }
-        //     }
-        // });
-        // 条件をもとにクエリを作成します
-        $queryBuilder = "";
-        $maxprice = 0;
-        $minprice = 0;
-        if (count($price_ranges) === 1) {
-            [$minprice, $maxprice]  = explode("to", $price_ranges[0]);
-            $filtered_products = Product::whereBetween('price', [$minprice, $maxprice])->get();
-            echo $filtered_products;
-        } else {
-
-            // indexと値を同時に取得
-            foreach ($price_ranges as $index => $price_range) {
-                [$minprice, $maxprice]  = explode("to", $price_ranges[$index]);
-                if ($index === 0) {
-                    $queryBuilder .= "Product::whereBetween('price', [$minprice, $maxprice])";
+        $query = Product::query();
+        $query->where(function ($q) use ($parsed) {
+            foreach ($parsed as $range){
+                if ($range['maxprice'] === null){
+                    $q->orWhere('price', '>=', $range['minprice']);
+                } else {
+                    $q->orWhereBetween('price', [$range['minprice'], $range['maxprice']]);
                 }
-                $queryBuilder .= "->orWhereBetween('price'," . "[" . $minprice . "," . $maxprice . "])";
             }
-            $queryBuilder .= "->get()";
-        }
+        });
 
-        // foreach($price_ranges as $price_range){
-        //     // WhereBetween('price', [$min, $max])->orWhereBetween(///)->get();
-        // }
-
+        $products = $query->orderBy('price')->get();
+        $categories = Category::get();
 
         //デバッグ用にコメントアウトしています。
-        // return redirect("/products");
+        return view("/products", compact('products', 'categories'));
     }
 }
