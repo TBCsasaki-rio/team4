@@ -1,3 +1,9 @@
+<head>
+    <meta charset="UTF-8">
+    <title>新規会員登録</title>
+    <link rel="stylesheet" href="{{ asset('resources/css/style.css') }}">
+</head>
+
 <body>
     <main>
         <h1>
@@ -37,5 +43,5 @@
          <a href="{{ route('login') }}">ログイン画面に戻る</a>
             
     </main>
-    <hr>
 </body>
+@include('footer')
