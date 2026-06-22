@@ -19,7 +19,9 @@
 </head>
 
 <header>
-    <h1 class="shop-title">SAY YOU!!ユージーン店</h1>
+    <h1>
+        <img src="{{ asset('images/header.jpg') }}" alt="headerLogo" style="max-width: 150px; height:auto;">
+    </h1>
     <nav>
         <form action="/products/search" method="post">
             @csrf
