@@ -25,6 +25,12 @@ body {
     flex-shrink: 0;
 }
 
+.filter-label {
+    display: block;
+    text-align: left;
+    padding-left: 10px;
+}
+
 /* 広告 */
 .banner-area {
     /* バーナーと絞り込みエリアとの間隔 */
@@ -108,3 +114,4 @@ main {
     flex-direction: row;
     margin: 0 auto;
 }
+
