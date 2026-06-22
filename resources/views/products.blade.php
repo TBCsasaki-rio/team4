@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" href="{{ asset('images/titleLogo.jpg') }}" type="image/jpeg">
     <title>商品一覧</title>
     <link rel="stylesheet" href="/css/products_style.css">
 </head>
@@ -88,5 +89,3 @@
     @include('footer')
 
 </body>
-
-@include('footer')

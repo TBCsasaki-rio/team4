@@ -1,5 +1,6 @@
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" href="{{ asset('images/titleLogo.jpg') }}" type="image/jpeg">
     <title>お客様情報入力</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
