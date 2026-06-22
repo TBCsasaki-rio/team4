@@ -1,5 +1,6 @@
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" href="{{ asset('images/titleLogo.jpg') }}" type="image/jpeg">
     <title>新規会員登録</title>
     <link rel="stylesheet" href="{{ asset('resources/css/style.css') }}">
 </head>
