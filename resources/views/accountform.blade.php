@@ -1,17 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>会員登録</title>
-<link rel="stylesheet" type="text/css" href="/css/style.css">
-</head>
 <body>
-    <header>
-        <h1>SayYou</h1>
-    </header>
-
     <main>
-        <h3>会員新規登録</h3>
+        <h1>新規会員登録</h1>
 
         <form action="{{ route('register') }}" method="post">
 
@@ -26,27 +15,27 @@
                 </ul>
             @endif
 
-            <table border="1">
+            <table>
                 <tr>
                     <th>お名前</th>
                     <td>
-                        <input type="text" name="name" value="{{ $name }}">
+                        <input type="text" name="name" placeholder="ユーザ名" value="{{ $name }}">
                     </td>
                 </tr>
                 <tr>
                     <th>パスワード</th>
                     <td>
-                        <input type="password" name="password">
+                        <input type="password" name="password" placeholder="パスワード">
                     </td>
                 </tr>
             </table>
 
+            <br>
             <button>登録</button>
-        </form>
+         </form>   
+        
+         <a href="{{ route('login') }}">ログイン画面に戻る</a>
+            
     </main>
-
     <hr>
-
-
 </body>
-</html>
