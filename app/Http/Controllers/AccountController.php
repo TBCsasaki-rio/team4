@@ -67,7 +67,7 @@ class AccountController extends Controller
         $request->session()->regenerate();
 
         // ログイン後、商品一覧画面に遷移
-        return redirect()->route('products');
+        return redirect('/products');
     }
 
 
@@ -114,7 +114,7 @@ class AccountController extends Controller
             ];
 
             // 入力画面に戻る
-            return view('register', $data);
+            return view('login', $data);
         }
 
         // データベースに登録

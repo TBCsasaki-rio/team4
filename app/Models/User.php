@@ -28,8 +28,7 @@ class User extends Authenticatable
         'password',     // パスワード
     ];
 
-
-
+    public $timestamps = false;
     /**
      * The attributes that should be hidden for serialization.
      *　配列等に変更する際に非表示にする属性
