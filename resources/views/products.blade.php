@@ -37,7 +37,7 @@
 
         <a href="/cart" style="padding-left: 10px;">カートを見る</a>
         <a href="/logout" style="padding-left: 10px;">ログアウト</a>
-        
+
     </header>
 
     <!-- カテゴリ一覧 -->
@@ -99,11 +99,11 @@
         <main class="main-content">
 
             <div class="content-header">
-                <div>対象商品数：<strong>120</strong> アイテム</div>
+                <div>対象商品数：<strong>{{count($products)}}</strong> アイテム</div>
                 <select class="sort-select">
-                    <option>新着順</option>
-                    <option>価格が安い順</option>
-                    <option>価格が高い順</option>
+                    <option value="{{url()}}/sort?option=new">新着順</option>
+                    <option value="products/sort?option=cheape">価格が安い順</option>
+                    <option value="products/sort?option=expensive">価格が高い順</option>
                 </select>
             </div>
 
@@ -130,6 +130,20 @@
 
     <!-- footer.php を読み込む -->
     @include('footer')
+
+    <script>
+        const sortSelect = document.querySelector('.sort-select');
+
+        if (sortSelect) {
+            sortSelect.addEventListener('change', function(){
+                const url = event.target.value;
+
+                if (url) {
+                    window.location.href = url;
+                }
+            });
+        }
+    </script>
 
 </body>
 
