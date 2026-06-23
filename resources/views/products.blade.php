@@ -24,24 +24,8 @@
 </head>
 
 <body>
-    <header>
-        <div class="shop-logo">
-            <a href="/products">
-                <img src="images/home_logo.jpg" alt="home-logo">
-            </a>
-        </div>
-
-        <form action="/products/search" method="post">
-            @csrf
-            <input type="text" name="keyword" placeholder="商品名" value="{{ old('keyword') }}">
-            <input type="number" name="maxprice" placeholder="価格">
-            <button>検索</button>
-        </form>
-
-        <a href="/cart" style="padding-left: 10px;">カートを見る</a>
-        <a href="/logout" style="padding-left: 10px;">ログアウト</a>
-
-    </header>
+    
+    @include('header')
 
     <!-- カテゴリ一覧 -->
     <div class="tab-wrapper">

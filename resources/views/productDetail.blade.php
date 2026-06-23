@@ -43,10 +43,12 @@
                 </div>
 
                 <div class="action-area">
-                    <form action="/cartAdd" method="post">
+                    <form action="/cartAdd{{$product->id}}" method="post">
+                        @csrf
                         <button class="btn-add-cart">カートに入れる</button>
                     </form>
                     <form action="/favariteAdd" method="post">
+                        @csrf
                         <button class="btn-favorite">♥ お気に入りに追加</button>
                     </form>
                 </div>
@@ -68,6 +70,7 @@
         </div>
         <div class="return">
             <form action="/products" method="get">
+                @csrf
                 <button type="submit" class="returnBtn">戻る</button>
             </form>
         </div>
