@@ -2,10 +2,10 @@
 <html>
 
 <head>
- <meta charset="UTF-8">
- <title>商品一覧</title>
- <link rel="stylesheet" href="/css/products_style.css">
- <style>
+    <meta charset="UTF-8">
+    <title>商品一覧</title>
+    <link rel="stylesheet" href="/css/products_style.css">
+    <style>
         header {
             display: flex;
             flex-direction: row;
@@ -19,7 +19,7 @@
             width: 50px;
             height: 50px;
         }
-  </style>
+    </style>
 
 </head>
 
@@ -104,9 +104,9 @@
             <div class="content-header">
                 <div>対象商品数：<strong>{{count($products)}}</strong> アイテム</div>
                 <select class="sort-select">
-                    <option value="{{url()}}/sort?option=new">新着順</option>
-                    <option value="products/sort?option=cheape">価格が安い順</option>
-                    <option value="products/sort?option=expensive">価格が高い順</option>
+                    <option value="new" {{ $currentSort === "new" ? 'selected' : '' }}>新着順</option>
+                    <option value="cheape" {{ $currentSort === "cheape" ? 'selected' : '' }}>価格が安い順</option>
+                    <option value="expensive" {{ $currentSort === "expensive" ? 'selected' : '' }}>価格が高い順</option>
                 </select>
             </div>
 
@@ -134,17 +134,19 @@
     <!-- footer.php を読み込む -->
     @include('footer')
 
-<<<<<<< HEAD
     <script>
         const sortSelect = document.querySelector('.sort-select');
 
         if (sortSelect) {
-            sortSelect.addEventListener('change', function(){
-                const url = event.target.value;
+            sortSelect.addEventListener('change', function() {
+                const sortOption = event.target.value;
 
-                if (url) {
-                    window.location.href = url;
-                }
+                if (sortOption === null) return;
+                //　現在のURLをもとに取得URLオブジェクトを作成
+                const url = new URL(window.location.href);
+                url.searchParams.set('sort', sortOption);
+                // GETリクエスト
+                window.location.href = url.toString();
             });
         }
     </script>
@@ -152,6 +154,3 @@
 </body>
 
 </html>
-=======
-</body>
->>>>>>> 783303532558fb6ae7ac4a8d9dfbbbeb6e91a2f7
