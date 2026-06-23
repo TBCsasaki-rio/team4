@@ -2,20 +2,66 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <link rel="icon" href="{{ asset('images/titleLogo.jpg') }}" type="image/jpeg">
-    <title>商品一覧</title>
-    <link rel="stylesheet" href="/css/products_style.css">
+ <meta charset="UTF-8">
+ <title>商品一覧</title>
+ <link rel="stylesheet" href="/css/products_style.css">
+ <style>
+        header {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            text-align: center;
+            gap: 20px;
+            margin-left: 20%;
+        }
+
+        .shop-logo img {
+            width: 50px;
+            height: 50px;
+        }
+  </style>
+
 </head>
 
 <body>
+    <header>
+        <div class="shop-logo">
+            <a href="/products">
+                <img src="images/home_logo.jpg" alt="home-logo">
+            </a>
+        </div>
 
-    <!-- header.php を読み込む -->
-    @include('header')
+        <form action="/products/search" method="post">
+            @csrf
+            <input type="text" name="keyword" placeholder="商品名" value="{{ old('keyword') }}">
+            <input type="number" name="maxprice" placeholder="価格">
+            <button>検索</button>
+        </form>
 
-    <hr>
+        <a href="/cart" style="padding-left: 10px;">カートを見る</a>
+        <a href="/logout" style="padding-left: 10px;">ログアウト</a>
+        
+    </header>
 
-    <div class="layout-wrapper">
+    <!-- カテゴリ一覧 -->
+    <div class="tab-wrapper">
+        <div class="categories">
+
+            <div class="category {{ !request()->has('categoryId') ? 'active' : ''}}">
+                <a href="/products">全商品</a>
+            </div>
+
+            @foreach ($categories as $category)
+            <div class="category {{ request()->get('categoryId') == $category['id'] ? 'active' : ''}}">
+                <a href="/products?categoryId={{ $category['id'] }}"
+                    style="margin-right: 5px;">
+                    {{ $category['name'] }}
+                </a>
+            </div>
+            @endforeach
+        </div>
+    </div>
+    <div class="content-layout-wrapper">
         <aside class="sidebar">
             <div class="banner-area">
                 <a href="#">
