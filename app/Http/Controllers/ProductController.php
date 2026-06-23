@@ -49,7 +49,6 @@ class ProductController extends Controller
     // 商品詳細
     public function details($id)
     {
-
         $product = Product::find($id);
         if ($product === null) {
             echo ('すみません。商品が見つかりませんでした。');
