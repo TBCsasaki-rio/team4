@@ -57,9 +57,7 @@ class RankingService
             // 上位順（集計順）に並び替え
             ->sortBy(function ($product) use ($ids) {
                 return array_search($product->id, $ids, true);
-            })
-            ->values();
-
+            });
         return $products;
     }
 

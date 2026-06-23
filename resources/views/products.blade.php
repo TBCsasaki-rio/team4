@@ -61,19 +61,25 @@
             @endforeach
         </div>
     </div>
+
     <div class="content-layout-wrapper">
         <aside class="sidebar">
             <div class="banner-area">
                 <div class="product">
-                    <a href="/products/{{$top1product['id']}}">
+
+                    <div class="badge">
+                        <span class="badge top1">TOP1</span>
+                    </div>
+
+                    <a href="/products/{{$top1product->id}}">
                         <img
-                            src="/image/products/{{$top1product['id']}}/{{ $top1product->mainImage->url }}"
+                            src="/image/products/{{$top1product->id}}/{{ $top1product->mainImage->url }}"
                             alt="商品画像"
                             class="product-image">
                     </a>
                     <div class="product-details">
-                        <h2>{{$top1product['name']}}</h2>
-                        <p>{{$top1product['price']}}円</p>
+                        <h2>{{$top1product->name}}</h2>
+                        <p>{{$top1product->price}}円</p>
                     </div>
                 </div>
                 <a href="#">
@@ -119,6 +125,7 @@
                 </select>
             </div>
 
+            
             <div class="product-list" id="product-list">
                 @foreach($products as $product)
                 <div class="product">

@@ -51,9 +51,8 @@ class ProductController extends Controller
 
         // ランキングTop10をキャッシュから取得。クエリ中は更新処理をしない
         $force = $request->query('force_update', false);
-        $top1product = $this->rankingService->getTopByPurchaseCount(1, (bool)$force);
+        $top1product = $this->rankingService->getTopByPurchaseCount(1, (bool)$force)->first();
         
-        echo $top1product;
         return view('products', compact('products', 'categories', 'top1product'))
                 ->with('currentSort', $sortOption);
     }
