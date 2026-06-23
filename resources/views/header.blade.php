@@ -1,50 +1,36 @@
 <head>
+    <link rel="icon" href="{{ asset('images/home_logo.jpg') }}" type="image/jpeg">
     <style>
-
         header {
             display: flex;
-            flex-direction: column;
-            text-align: center;
-        }
-
-        header .categories {
-            display: flex;
             flex-direction: row;
+            justify-content: flex-start;
+            text-align: center;
+            gap: 20px;
+            height: 55px;
+            margin: 15px 15px 15px 15px;
             justify-content: center;
-            gap: 10px;
+
         }
 
-    </style>
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+  </style>
 </head>
 
 <header>
-    <h1>
-        <img src="{{ asset('images/header.jpg') }}" alt="headerLogo" style="max-width: 150px; height:auto;">
-    </h1>
-    <nav>
-        <form action="/products/search" method="post">
-            @csrf
-            <input type="text" name="keyword" placeholder="商品名" value="{{ old('keyword') }}">
-            <input type="number" name="maxprice" placeholder="価格">
-            <button>検索</button>
-        </form>
+    <div class="shop-logo">
+        <a href="/products">
+            <img src="{{ asset('images/home_logo.jpg') }}" alt="home_logo" style="max-width: 50px; height:50px;">
+        </a>
+    </div>
 
-        <!-- カテゴリ一覧 -->
-        <div class="categories">
-            <div class="category">
-                <a href="/products">全商品</a>
-            </div>
+    <form action="/products/search" method="post" style="display: flex; justify-content: center; align-items: center;">
+        @csrf
+        <input type="text" name="keyword" placeholder="商品名" value="{{ old('keyword') }}">
+        <input type="number" name="maxprice" placeholder="価格">
+        <button>検索</button>
+    </form>
 
-            @foreach ($categories as $category)
-            <div class="category">
-                <a href="/products?categoryId={{ $category['id'] }}"
-                    style="margin-right: 5px;">
-                    {{ $category['name'] }}
-                </a>
-            </div>
-            @endforeach
-        </div>
-
-        <a href="/cart" style="padding-left: 10px;">カートを見る</a>
+    <a href="/cart" style="padding-left: 10px; display: flex; justify-content: center; align-items: center;">カートを見る</a>
+    <a href="/logout" style="padding-left: 10px; display: flex; justify-content: center; align-items: center;">ログアウト</a>
+        
 </header>
