@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Servicies\RankingService;
 use Illuminate\Http\Request;
 use Ramsey\Collection\Collection;
 
@@ -11,6 +12,12 @@ use function PHPUnit\Framework\isEmpty;
 
 class ProductController extends Controller
 {
+    protected RankingService $rankingService;
+
+    public function __construct(RankingService $rankingService){
+        $this->rankingService = $rankingService;
+    }
+
     // 商品一覧表示・カテゴリーごとに表示
     public function products(Request $request)
     {
@@ -42,7 +49,12 @@ class ProductController extends Controller
         $products = $query->get();
         $categories = Category::get();
 
-        return view('products', compact('products', 'categories'))
+        // ランキングTop10をキャッシュから取得。クエリ中は更新処理をしない
+        $force = $request->query('force_update', false);
+        $top1product = $this->rankingService->getTopByPurchaseCount(1, (bool)$force);
+        
+        echo $top1product;
+        return view('products', compact('products', 'categories', 'top1product'))
                 ->with('currentSort', $sortOption);
     }
 
