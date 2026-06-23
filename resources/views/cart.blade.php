@@ -45,7 +45,7 @@
                             <td>{{ $details['quantity'] }}</td>
                             <td>{{ number_format($details['price'] * $details['quantity']) }}円</td>
                             <td>
-                                <form action="{{ route('cart.remove', $id) }}" method="POST" onsubmit="return confirm('本当に削除しますか？')">
+                                <form action="/cart/remove{{$id}}" method="POST" onsubmit="return confirm('本当に削除しますか？')">
                                     @csrf
                                     <button type="submit" class="btn btn-danger btn-sm">削除</button>
                                 </form>

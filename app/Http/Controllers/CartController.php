@@ -55,6 +55,6 @@ class CartController extends Controller
             session()->put('cart', $cart);
         }
  
-        return redirect()->route('cart.index')->with('success', 'カートから商品を削除しました。');
+        return redirect('/cart')->with('success', 'カートから商品を削除しました。');
     }
 }
