@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="{{ asset('images/titleLogo.jpg') }}" type="image/jpeg">
     <title>カート</title>
-    <link rel="stylesheet" href="{{ asset('resources/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 <body class="bg-light">
-
+    @include('header')
 <div class="container my-5">
     <h1 class="mb-4">カート</h1>
 
@@ -22,7 +22,7 @@
         <div class="card p-5 text-center">
             <p class="fs-5 text-muted">カートは空です。</p>
             <div class="mt-3">
-                <a href="/porducts" class="btn btn-primary">ショッピングを続ける</a>
+                <a href="/" class="btn btn-primary">ショッピングを続ける</a>
             </div>
         </div>
     @else
@@ -57,7 +57,7 @@
 
             <div class="d-flex justify-content-between align-items-center mt-4">
                 <div>
-                    <a href="/products" class="btn btn-outline-secondary">買い物を続ける</a>
+                    <a href="/" class="btn btn-outline-secondary">買い物を続ける</a>
                 </div>
                 <div class="text-end">
                     <h3 class="mb-3">合計金額: <span class="text-danger">{{ number_format($total) }}円</span></h3>
