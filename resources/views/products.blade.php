@@ -2,7 +2,10 @@
 <html>
 
 <head>
-    <style>
+ <meta charset="UTF-8">
+ <title>商品一覧</title>
+ <link rel="stylesheet" href="/css/products_style.css">
+ <style>
         header {
             display: flex;
             flex-direction: row;
@@ -16,8 +19,8 @@
             width: 50px;
             height: 50px;
         }
-    </style>
-    <link rel="stylesheet" href="/css/products_style.css">
+  </style>
+
 </head>
 
 <body>
@@ -132,5 +135,3 @@
     @include('footer')
 
 </body>
-
-</html>
