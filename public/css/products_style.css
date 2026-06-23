@@ -1,3 +1,56 @@
+.tab-wrapper {
+    width: 100%;
+    margin-top: 30px;
+}
+.categories {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 5px;
+    padding-left: 20px;
+    border-bottom: 2px solid #4a6fa5;
+}
+.category {
+    border: 2px solid transparent;
+    border-radius: 5px 5px 0 0; /*上の角だけ丸くする*/
+    background-color: #f5f5f5;
+}
+.category a {
+    display: block;
+    padding: 10px 25px;
+    text-decoration: none;
+    color: #666;
+    font-weight: bold;
+}
+/* activeが付いていたら枠の下線を透明化して
+少し下にずらす（contentの枠線を隠すため） */
+.category.active {
+    background-color: #fff;
+    border-color: #4a6fa5;
+    border-bottom-color: transparent; 
+    /* 親要素のborderの真上に重ねるための設定 */
+    position: relative;
+    top: 2px;
+    z-index: 10;
+}
+.category.active a {
+    color: #4a6fa5;
+}
+
+/* ヘッダー以外の全体を覆うflexBox
+サイドバーとmainコンテンツが属する */
+.content-layout-wrapper {
+    display: flex;
+    border: 2px solid #4a6fa5;
+    border-top: none;
+    padding: 20px;
+    background-color: #fff;
+}
+.sidebar {
+    width: 250px;
+    margin-right: 20px;
+}
+
 body {
     /* FlexBoxを指定 */
     display: flex;
@@ -5,25 +58,13 @@ body {
     flex-direction: column;
     /* ビューポート（ブラウザの表示領域）に応じた相対単位 */
     min-height: 100vh;
-    background-color: #EFF0F7;
+    /* background-color: #EFF0F7; */
+    background-color: #ffff;
     /* ブロック内の要素の配置指定 */
     text-align: center;
     max-width: 1400vh;
 }
 
-/* ヘッダー以外の全体を覆うflexBox
-サイドバーとmainコンテンツが属する */
-.layout-wrapper {
-    display: flex;
-    gap: 30px;
-}
-
-/* サイドバー */
-.sidebar {
-    width: 250px;
-    /* 親要素がはみ出た場合の縮小設定 */
-    flex-shrink: 0;
-}
 
 .filter-label {
     display: block;
