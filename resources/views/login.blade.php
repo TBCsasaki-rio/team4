@@ -12,7 +12,6 @@
                 <img src="{{ asset('images/login.jpg') }}" alt="loginLogo" style="max-width: 250px; height:auto;">
             </h1>
             <form action="{{ route('login') }}" method="post">
-                
                 @csrf
 
                 <table>
