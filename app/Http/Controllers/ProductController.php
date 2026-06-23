@@ -14,7 +14,8 @@ class ProductController extends Controller
 {
     protected RankingService $rankingService;
 
-    public function __construct(RankingService $rankingService){
+    public function __construct(RankingService $rankingService)
+    {
         $this->rankingService = $rankingService;
     }
 
@@ -30,7 +31,7 @@ class ProductController extends Controller
             $query->where('category_id', $categoryId);
         }
 
-        if($sortOption != null) {
+        if ($sortOption != null) {
             switch ($sortOption) {
                 case ("new"):
                     // $query->orderBy('created_at');
@@ -45,20 +46,20 @@ class ProductController extends Controller
                     break;
             }
         }
-        
+
         $products = $query->get();
         $categories = Category::get();
 
         // ランキングTop10をキャッシュから取得。クエリ中は更新処理をしない
         $force = $request->query('force_update', false);
         $top1product = $this->rankingService->getTopByPurchaseCount(1, (bool)$force)->first();
-        
+
         if ($top1product === null) {
             $top1product = Product::first();
         }
 
         return view('products', compact('products', 'categories', 'top1product'))
-                ->with('currentSort', $sortOption);
+            ->with('currentSort', $sortOption);
     }
 
     // 商品詳細
@@ -69,6 +70,7 @@ class ProductController extends Controller
             echo ('すみません。商品が見つかりませんでした。');
             return redirect('/products');
         }
+        
 
         return view('productDetail', compact('product'));
     }
@@ -94,9 +96,25 @@ class ProductController extends Controller
                 ->where('price', '<=', $maxprice)
                 ->get();
         }
+        // 現在選択中のソート条件を取得
+        $currentSort = $request->input('sort', "new");
+
+        // カテゴリー一覧取得
+        $categories = Category::get();
+
+        // ランキングTop10をキャッシュから取得。クエリ中は更新処理をしない
+        $force = $request->query('force_update', false);
+        $top1product = $this->rankingService->getTopByPurchaseCount(1, (bool)$force)->first();
+
+        if ($top1product === null) {
+            $top1product = Product::first();
+        }
 
         return view('products')
-            ->with('products', $searchedProducts);
+            ->with('categories', $categories)
+            ->with('currentSort', $currentSort)
+            ->with('products', $searchedProducts)
+            ->with('top1product',$top1product);
     }
 
     // サイドバーの条件をもとにProductにクエリを送り、
@@ -106,10 +124,10 @@ class ProductController extends Controller
     // 3. queryBuilderを作成する
     public function conditionSearch(Request $request)
     {
-        $price_ranges = $request->input('filter-price-range',[]);
+        $price_ranges = $request->input('filter-price-range', []);
         $category_ids = $request->input('filter-category', []);
 
-        if (count($price_ranges) === 0 and count($category_ids) === 0){
+        if (count($price_ranges) === 0 and count($category_ids) === 0) {
             return redirect("/products");
         }
 
@@ -118,7 +136,7 @@ class ProductController extends Controller
         $query = Product::query();
 
         if (count($price_ranges) > 0) {
-            foreach ($price_ranges as $price_range){
+            foreach ($price_ranges as $price_range) {
                 // 0to499 -> 0, 499 に分けて、変数に格納
                 [$minprice, $maxprice] = explode('to', $price_range);
                 // is_numeric() 数字であるかを検査
@@ -128,29 +146,38 @@ class ProductController extends Controller
                 $parsed[] = ['minprice' => $minprice, 'maxprice' => $maxprice];
 
                 $query->where(function ($q) use ($parsed) {
-                    foreach ($parsed as $range){
-                        if ($range['maxprice'] === null){
+                    foreach ($parsed as $range) {
+                        if ($range['maxprice'] === null) {
                             $q->orWhere('price', '>=', $range['minprice']);
-                            } else {
-                                $q->orWhereBetween('price', [$range['minprice'], $range['maxprice']]);
-                            }
+                        } else {
+                            $q->orWhereBetween('price', [$range['minprice'], $range['maxprice']]);
+                        }
                     }
                 });
             }
         }
 
         if (count($category_ids) > 0) {
-            foreach($category_ids as $category_id){
-                $query->where(function ($q) use ($category_id){
+            foreach ($category_ids as $category_id) {
+                $query->where(function ($q) use ($category_id) {
                     $q->orWhere('category_id', $category_id);
                 });
             }
         }
-        
+
         $products = $query->get();
         $categories = Category::get();
+        $currentSort = $request->input('sort', "new");
+
+        // ランキングTop10をキャッシュから取得。クエリ中は更新処理をしない
+        $force = $request->query('force_update', false);
+        $top1product = $this->rankingService->getTopByPurchaseCount(1, (bool)$force)->first();
+
+        if ($top1product === null) {
+            $top1product = Product::first();
+        }
 
         //デバッグ用にコメントアウトしています。
-        return view("/products", compact('products', 'categories'));
+        return view("products", compact('products', 'categories', 'top1product', 'currentSort'));
     }
 }
