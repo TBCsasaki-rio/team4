@@ -11,10 +11,8 @@
 <body>
     <!-- header.php を読み込む -->
     @include('header')
-    <hr>
 
     <div class="layout-wrapper">
-
         <div class="product">
             <div class="product-image">
                 <div class="main-image">
@@ -68,10 +66,12 @@
                 </div>
             </div>
         </div>
-
+        <div class="return">
+            <form action="/products" method="get">
+                <button type="submit" class="returnBtn">戻る</button>
+            </form>
+        </div>
     </div>
-
-    <hr>
 
     <!-- footer.php を読み込む -->
     @include('footer')

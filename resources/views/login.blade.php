@@ -27,7 +27,7 @@
                 </table>
 
                 <div class="button">
-                    <button type="submit">ログイン</button>
+                    <button type="submit" class="btn">ログイン</button>
                 </div>
 
                 @if (!empty($errorList))

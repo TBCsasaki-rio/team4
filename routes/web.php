@@ -1,3 +1,4 @@
+
 <?php
 
 use App\Http\Controllers\CartController;
@@ -5,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AccountController;   // ログイン・会員登録・ログアウト
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\MailController;
 
 // ログイン機能
 // ================================================
@@ -39,4 +41,11 @@ Route::get('/cart',[CartController::class,'index']);
 
 // オーダー機能
 Route::get('/order', [OrderController::class, 'index']);
+
+Route::post('/order', [OrderController::class, 'order']);
+
 Route::get('/ordercomp', [OrderController::class, 'ordercomp']);
+
+Route::post('/order/complete', [MailController::class, 'complete'])
+    ->name('order.complete');
+

@@ -8,30 +8,58 @@ body {
     /* コンテナ内のアイテムを並べる方向を指定 */
     flex-direction: column;
     line-height: 1.6;
-    min-height: 1024px;
-    background-color: #EFF0F7;
+    background-color: #fff;
     /* ブロック内の要素の配置指定 */
     text-align: center;
     max-width: 1400px;
+    justify-content: center;
 }
 
 /* ヘッダー以外の全体を覆うflexBox
 サイドバーとmainコンテンツが属する */
 
+.layout-wrapper {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+/* 商品詳細画面から商品一覧画面に戻るボタン */
+.return {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.returnBtn {
+    background-color: #4682b4;
+    color: #ffffff;
+    border: none;
+    padding: 4px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+    letter-spacing: 0.1rem;
+    width: 100px;
+    box-shadow: 0 4px 12px rgba(135, 206, 250, 0.3);
+}
 
 .product {
     display: flex;
     gap: 20px;
     /* 上揃え */
     align-items: flex-start;
-    padding-bottom: 80px;
-    width: 1200px;
-    margin:0 auto;
+    width: 800px;
+    height: 380px;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* 軽い影（立体感） */
 }
 
 .product-image {
     /* 何に対しての割合？ */
-    width: 55%;
+    width: 360px;
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -39,54 +67,34 @@ body {
 }
 
 .product-image img {
-    width: 100%;
-    height: auto;
+    width: auto;
+    height: 380px;
     display: block;
     transition: transform 0.3s ease;
 }
 
-.sub-image-list{
-    display:flex;
-    gap: 12px;
-}
-
-.sub-image-list img {
-    /* エリアの5分の1範囲でサブ画像の幅を設定 */
-    width: calc(20% - 9.6px);
-    height: auto;
-    cursor: pointer;
-    border: 1px solid black;
-    /* ease:徐々に変わっていく */
-    transition: all 0.2s ease;
-    background-color: #ffff;
-}
-
-.sub-image-list img.active,
-.sub-image-list img.hover {
-    border: 2px solid #c5a059;
-    opacity: 0.8;
-}
-
 .product-details {
-    width: 45%;
+    height: 150px;
+    width: 380px;
 }
 
 .detail-header {
     border-bottom: 1px solid #e5e0db;
-    padding-bottom: 20px;
-    margin-bottom: 24px;
 }
 
 .product-title {
     /* rem(root em): <html>のfontsizeを基準にした相対単位 */
-    font-size: 30px;
+    font-size: 28px;
     font-weight: 400;
     line-height: 1.4;
     color: #222222;
+    height: 50px;
+    margin-top: 5px;
 }
 
 .product-price-area {
-    margin-bottom: 24px;
+    height: 55px;
+    margin-bottom: 10px;
 }
 
 .price-value {
@@ -107,21 +115,22 @@ body {
 .action-area {
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    margin-bottom: 48px;
+    gap: 8px;
+
 }
 
 .btn-add-cart {
     background-color: #7a1228;
     color: #ffffff;
     border: none;
-    padding: 20px;
-    font-size: 1.2rem;
+    padding: 12px;
+    font-size: 1.0rem;
     font-weight: bold;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: 8px;
     transition: background-color 0.3s;
     letter-spacing: 0.1rem;
+    width: 180px;
     box-shadow: 0 4px 12px rgba(122, 18, 40, 0.2);
 }
 
@@ -133,7 +142,7 @@ body {
     background-color: #ffffff;
     border: 1px solid var(--border-color);
     color: var(--text-main);
-    padding: 16px;
+    padding: 15px;
     font-size: 1rem;
     cursor: pointer;
     border-radius: 4px;
@@ -149,8 +158,7 @@ body {
     font-size: 1.1rem;
     font-weight: bold;
     border-bottom: 2px solid #222222;
-    padding-bottom: 12px;
-    margin-bottom: 20px;
+    padding-bottom: 12px;    
 }
 .product-specs table {
     width: 100%;
@@ -161,13 +169,13 @@ body {
 
 .product-specs th,
 .product-specs td {
-    padding: 16px 12px;
+    padding: 5px 5px;
     border-bottom: 1px solid #e5e0db;
     text-align: left;
 }
 
 .product-specs th {
-    width: 25%;
+    width: 100px;
     font-weight: normal;
     color: #777777;
     background-color: #fafafa;
