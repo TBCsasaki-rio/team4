@@ -17,7 +17,7 @@ class Product extends Model
     protected $fillable = ['name', 'price', 'category_id'];
 
     // 不要かも：現時点で使用箇所なし
-    public function categories(){
+    public function category(){
         // belongTo: カテゴリーを親として指定し所有
         return $this->belongsTo(Category::class);
     }

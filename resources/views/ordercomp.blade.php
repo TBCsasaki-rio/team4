@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" href="{{ asset('images/titleLogo.jpg') }}" type="image/jpeg">
     <title>注文完了</title>
 
     {{-- CSS --}}
@@ -27,4 +28,4 @@
     <hr>
 
 </body>
-</html>
+@include('footer')

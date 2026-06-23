@@ -19,11 +19,11 @@ class CartController extends Controller
             $total += $item['price'] * $item['quantity'];
         }
  
-        return view('cart.index', compact('cart', 'total'));
+        return view('cart', compact('cart', 'total'));
     }
  
     // カートに商品を追加
-    public function add(Request $request, $id)
+    public function add(Request $request, int $id)
     {
         $product = Product::findOrFail($id);
         $cart = session()->get('cart', []);
@@ -46,7 +46,7 @@ class CartController extends Controller
     }
  
     // カートから商品を削除
-    public function remove($id)
+    public function remove(int $id)
     {
         $cart = session()->get('cart', []);
  
