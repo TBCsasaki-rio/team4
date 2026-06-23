@@ -38,8 +38,8 @@ Route::post('/products/conditionSearch', [ProductController::class, 'conditionSe
 
 // カート機能
 Route::get('/cart',[CartController::class,'index']);
-Route::post('/cartAdd{id}', [CartController::class, 'add']);
-Route::post('/cart/remove{id}', [CartController::class, 'remove']);
+Route::post('/cart/add/{id}', [CartController::class, 'add'])->name('cart.add');
+Route::post('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
 
 // オーダー機能
 Route::get('/order', [OrderController::class, 'index']);

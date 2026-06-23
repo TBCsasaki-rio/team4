@@ -43,7 +43,7 @@
                 </div>
 
                 <div class="action-area">
-                    <form action="/cartAdd{{$product->id}}" method="post">
+                    <form action="{{ route('cart.add', ['id' => $product->id]) }}" method="post">
                         @csrf
                         <button class="btn-add-cart">カートに入れる</button>
                     </form>
