@@ -15,17 +15,35 @@ class ProductController extends Controller
     public function products(Request $request)
     {
 
-        $categoryId = $request['categoryId'];
+        $categoryId = $request->input('categoryId', null);
+        $sortOption = $request->input('sort', null);
 
-        if ($categoryId === null) {
-            $products = Product::with('mainImage')->get();
-        } else {
-            $products = Product::with('mainImage')->where('category_id', $categoryId)->get();
+        $query = Product::query();
+        if ($categoryId != null) {
+            $query->where('category_id', $categoryId);
         }
 
+        if($sortOption != null) {
+            switch ($sortOption) {
+                case ("new"):
+                    // $query->orderBy('created_at');
+                    break;
+                case ("cheape"):
+                    $query->orderBy('price', 'asc');
+                    break;
+                case ("expensive"):
+                    $query->orderBy('price', 'desc');
+                    break;
+                default:
+                    break;
+            }
+        }
+        
+        $products = $query->get();
         $categories = Category::get();
 
-        return view('products', compact('products', 'categories'));
+        return view('products', compact('products', 'categories'))
+                ->with('currentSort', $sortOption);
     }
 
     // 商品詳細
