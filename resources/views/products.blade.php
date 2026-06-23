@@ -2,10 +2,10 @@
 <html>
 
 <head>
- <meta charset="UTF-8">
- <title>商品一覧</title>
- <link rel="stylesheet" href="/css/products_style.css">
- <style>
+    <meta charset="UTF-8">
+    <title>商品一覧</title>
+    <link rel="stylesheet" href="/css/products_style.css">
+    <style>
         header {
             display: flex;
             flex-direction: row;
@@ -19,7 +19,7 @@
             width: 50px;
             height: 50px;
         }
-  </style>
+    </style>
 
 </head>
 
@@ -40,7 +40,7 @@
 
         <a href="/cart" style="padding-left: 10px;">カートを見る</a>
         <a href="/logout" style="padding-left: 10px;">ログアウト</a>
-        
+
     </header>
 
     <!-- カテゴリ一覧 -->
@@ -102,11 +102,11 @@
         <main class="main-content">
 
             <div class="content-header">
-                <div>対象商品数：<strong>120</strong> アイテム</div>
+                <div>対象商品数：<strong>{{count($products)}}</strong> アイテム</div>
                 <select class="sort-select">
-                    <option>新着順</option>
-                    <option>価格が安い順</option>
-                    <option>価格が高い順</option>
+                    <option value="new" {{ $currentSort === "new" ? 'selected' : '' }}>新着順</option>
+                    <option value="cheape" {{ $currentSort === "cheape" ? 'selected' : '' }}>価格が安い順</option>
+                    <option value="expensive" {{ $currentSort === "expensive" ? 'selected' : '' }}>価格が高い順</option>
                 </select>
             </div>
 
@@ -134,4 +134,23 @@
     <!-- footer.php を読み込む -->
     @include('footer')
 
+    <script>
+        const sortSelect = document.querySelector('.sort-select');
+
+        if (sortSelect) {
+            sortSelect.addEventListener('change', function() {
+                const sortOption = event.target.value;
+
+                if (sortOption === null) return;
+                //　現在のURLをもとに取得URLオブジェクトを作成
+                const url = new URL(window.location.href);
+                url.searchParams.set('sort', sortOption);
+                // GETリクエスト
+                window.location.href = url.toString();
+            });
+        }
+    </script>
+
 </body>
+
+</html>
