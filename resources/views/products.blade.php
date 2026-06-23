@@ -137,7 +137,7 @@
                     </a>
                     <div class="product-details">
                         <h2>{{$product['name']}}</h2>
-                        <p>{{$product['price']}}円</p>
+                        <p class="product-price">{{$product['price']}}円</p>
                     </div>
                 </div>
                 @endforeach
