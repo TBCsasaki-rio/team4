@@ -2,7 +2,10 @@
 <html>
 
 <head>
-    <style>
+ <meta charset="UTF-8">
+ <title>商品一覧</title>
+ <link rel="stylesheet" href="/css/products_style.css">
+ <style>
         header {
             display: flex;
             flex-direction: row;
@@ -16,8 +19,8 @@
             width: 50px;
             height: 50px;
         }
-    </style>
-    <link rel="stylesheet" href="/css/products_style.css">
+  </style>
+
 </head>
 
 <body>
@@ -131,6 +134,7 @@
     <!-- footer.php を読み込む -->
     @include('footer')
 
+<<<<<<< HEAD
     <script>
         const sortSelect = document.querySelector('.sort-select');
 
@@ -148,3 +152,6 @@
 </body>
 
 </html>
+=======
+</body>
+>>>>>>> 783303532558fb6ae7ac4a8d9dfbbbeb6e91a2f7
