@@ -19,7 +19,7 @@ class CartController extends Controller
             $total += $item['price'] * $item['quantity'];
         }
  
-        return view('cart.index', compact('cart', 'total'));
+        return view('cart', compact('cart', 'total'));
     }
  
     // カートに商品を追加
