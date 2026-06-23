@@ -13,6 +13,19 @@
 
         }
 
+        .searchBtn {
+            background-color: #4682b4;
+            color: #ffffff;
+            border: none;
+            padding: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+            letter-spacing: 0.1rem;
+            box-shadow: 0 4px 12px rgba(135, 206, 250, 0.3);
+        }
   </style>
 </head>
 
@@ -27,7 +40,7 @@
         @csrf
         <input type="text" name="keyword" placeholder="商品名" value="{{ old('keyword') }}">
         <input type="number" name="maxprice" placeholder="価格">
-        <button>検索</button>
+        <button class="searchBtn">検索</button>
     </form>
 
     <a href="/cart" style="padding-left: 10px; display: flex; justify-content: center; align-items: center;">カートを見る</a>
