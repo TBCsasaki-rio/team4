@@ -38,6 +38,7 @@ Route::post('/products/conditionSearch', [ProductController::class, 'conditionSe
 
 // カート機能
 Route::get('/cart',[CartController::class,'index']);
+Route::post('/cartAdd', [CartController::class, 'add']);
 
 // オーダー機能
 Route::get('/order', [OrderController::class, 'index']);
