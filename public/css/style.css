@@ -49,3 +49,18 @@ main {
 .product {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* 軽い影（立体感） */
 }
+
+/* ログインボタンの装飾 */
+.btn {
+    background-color: #4682b4;
+    color: #ffffff;
+    border: none;
+    padding: 4px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+    letter-spacing: 0.1rem;
+    box-shadow: 0 4px 12px rgba(135, 206, 250, 0.3);
+}

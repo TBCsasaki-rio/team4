@@ -39,7 +39,7 @@
                 </table>
 
                 <div class="button">
-                    <button type="submit">登録</button>
+                    <button type="submit" class="btn">登録</button>
                 </div>
             </form>   
             
