@@ -12,6 +12,10 @@
             justify-content: center;
 
         }
+        .shop-logo img{
+            width: 130px;
+            height: 40px;
+        }
 
         .searchBtn {
             background-color: #4682b4;
@@ -32,7 +36,8 @@
 <header>
     <div class="shop-logo">
         <a href="/products">
-            <img src="{{ asset('images/home_logo.jpg') }}" alt="home_logo" style="max-width: 50px; height:50px;">
+            <img src="{{ asset('images/logo.jpg') }}" alt="home_logo"">
+            <!-- <img src="{{ asset('images/home_logo.jpg') }}" alt="home_logo" style="max-width: 50px; height:50px;"> -->
         </a>
     </div>
 
