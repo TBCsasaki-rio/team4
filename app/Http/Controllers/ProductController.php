@@ -53,6 +53,10 @@ class ProductController extends Controller
         $force = $request->query('force_update', false);
         $top1product = $this->rankingService->getTopByPurchaseCount(1, (bool)$force)->first();
         
+        if ($top1product === null) {
+            $top1product = Product::first();
+        }
+
         return view('products', compact('products', 'categories', 'top1product'))
                 ->with('currentSort', $sortOption);
     }
