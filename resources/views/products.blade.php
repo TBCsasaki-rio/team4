@@ -61,12 +61,27 @@
             @endforeach
         </div>
     </div>
+
     <div class="content-layout-wrapper">
         <aside class="sidebar">
             <div class="banner-area">
-                <a href="#">
-                    <img src="https://via.placeholder.com/250x100/ffdddd/cc0000?text=Summer+Sale" alt="サマーセール">
-                </a>
+                <div class="product">
+
+                    <div class="badge">
+                        <span class="badge top1">TOP1</span>
+                    </div>
+
+                    <a href="/products/{{$top1product->id}}">
+                        <img
+                            src="/image/products/{{$top1product->id}}/{{ $top1product->mainImage->url }}"
+                            alt="商品画像"
+                            class="product-image">
+                    </a>
+                    <div class="product-details">
+                        <h2>{{$top1product->name}}</h2>
+                        <p>{{$top1product->price}}円</p>
+                    </div>
+                </div>
                 <a href="#">
                     <img src="https://via.placeholder.com/250x250/ddf0ff/0066cc?text=Diamond+Fair" alt="ダイヤモンドフェア">
                 </a>
@@ -110,6 +125,7 @@
                 </select>
             </div>
 
+            
             <div class="product-list" id="product-list">
                 @foreach($products as $product)
                 <div class="product">
