@@ -24,14 +24,15 @@ body {
     gap: 20px;
     /* 上揃え */
     align-items: flex-start;
-    padding-bottom: 80px;
-    width: 1200px;
-    margin:0 auto;
+    width: 800px;
+    height: 400px;
+
 }
 
 .product-image {
     /* 何に対しての割合？ */
-    width: 55%;
+    width: 360px;
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -39,54 +40,34 @@ body {
 }
 
 .product-image img {
-    width: 100%;
-    height: auto;
+    width: auto;
+    height: 400px;
     display: block;
     transition: transform 0.3s ease;
 }
 
-.sub-image-list{
-    display:flex;
-    gap: 12px;
-}
-
-.sub-image-list img {
-    /* エリアの5分の1範囲でサブ画像の幅を設定 */
-    width: calc(20% - 9.6px);
-    height: auto;
-    cursor: pointer;
-    border: 1px solid black;
-    /* ease:徐々に変わっていく */
-    transition: all 0.2s ease;
-    background-color: #ffff;
-}
-
-.sub-image-list img.active,
-.sub-image-list img.hover {
-    border: 2px solid #c5a059;
-    opacity: 0.8;
-}
-
 .product-details {
-    width: 45%;
+    height: 150px;
+    width: 380px;
 }
 
 .detail-header {
     border-bottom: 1px solid #e5e0db;
-    padding-bottom: 20px;
-    margin-bottom: 24px;
 }
 
 .product-title {
     /* rem(root em): <html>のfontsizeを基準にした相対単位 */
-    font-size: 30px;
+    font-size: 32px;
     font-weight: 400;
     line-height: 1.4;
     color: #222222;
+    height: 60px;
+    margin-top: 15px;
 }
 
 .product-price-area {
-    margin-bottom: 24px;
+    height: 75px;
+    margin-top: 15px;
 }
 
 .price-value {
@@ -107,16 +88,16 @@ body {
 .action-area {
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    margin-bottom: 48px;
+    gap: 8px;
+
 }
 
 .btn-add-cart {
     background-color: #7a1228;
     color: #ffffff;
     border: none;
-    padding: 20px;
-    font-size: 1.2rem;
+    padding: 12px;
+    font-size: 1.0rem;
     font-weight: bold;
     cursor: pointer;
     border-radius: 4px;
@@ -133,7 +114,7 @@ body {
     background-color: #ffffff;
     border: 1px solid var(--border-color);
     color: var(--text-main);
-    padding: 16px;
+    padding: 15px;
     font-size: 1rem;
     cursor: pointer;
     border-radius: 4px;
@@ -149,8 +130,7 @@ body {
     font-size: 1.1rem;
     font-weight: bold;
     border-bottom: 2px solid #222222;
-    padding-bottom: 12px;
-    margin-bottom: 20px;
+    padding-bottom: 12px;    
 }
 .product-specs table {
     width: 100%;
@@ -161,13 +141,13 @@ body {
 
 .product-specs th,
 .product-specs td {
-    padding: 16px 12px;
+    padding: 5px 5px;
     border-bottom: 1px solid #e5e0db;
     text-align: left;
 }
 
 .product-specs th {
-    width: 25%;
+    width: 100px;
     font-weight: normal;
     color: #777777;
     background-color: #fafafa;
