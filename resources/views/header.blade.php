@@ -76,12 +76,32 @@
         .action-icon {
             font-size: 20px;
             margin-bottom: 4px;
+            position: relative;
         }
 
         .action-text {
             font-size: 10px;
             white-space: nowrap;
             text-decoration: underline;
+        }
+
+        .cart-badge {
+            position: absolute;
+            /* アイコンの中央に配置するための設定 */
+            top: 20%;  /* 上からの位置。画像によって 30% や 50% に微調整してください */
+            left: 50%; /* 左から50%（中央） */
+            transform: translate(-50%, -50%); /* 基準点を文字のド真ん中にズラす */
+
+            color: #f08804; /* Amazon風のオレンジ色 */
+            font-size: 13px; /* アイコンの中に入れるため、少し大きめが見やすいです */
+            font-weight: bold;
+            
+            /* もしカート画像の色（黒など）と被って見えにくい場合は、白いフチ取り（光彩）をつけると見やすくなります */
+            text-shadow: 
+                -1px -1px 0 #fff,  
+                 1px -1px 0 #fff,
+                -1px  1px 0 #fff,
+                 1px  1px 0 #fff;
         }
 
         #mypage-toggle {
@@ -164,6 +184,9 @@
         <a href="/cart" class="action-item">
             <span class="action-icon">
                 <img src="{{ asset('images/shopping_cart.png') }}">
+                @if(session('cart'))
+                    <span class="cart-badge">{{ count(session()->get('cart',[])) }}</span>
+                @endif
             </span>
             <span class="action-text">カートを見る</span>
         </a>
