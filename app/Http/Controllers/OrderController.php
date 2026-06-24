@@ -45,9 +45,13 @@ class OrderController extends Controller
         }
 
         // ✅ セッションカート削除
-        session()->forget('cart');
+      
 
         DB::commit();
+
+        session()->put('cart', []);
+
+        // session()->forget('cart');
 
         session(['orderNumber' => $order_id]);
 
@@ -55,6 +59,7 @@ class OrderController extends Controller
 
     } catch (\Exception $e) {
         DB::rollBack();
+
         return back()->withErrors(['error' => '注文処理に失敗']);
     }
 }
