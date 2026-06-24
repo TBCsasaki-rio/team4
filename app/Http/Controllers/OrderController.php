@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -45,9 +46,11 @@ class OrderController extends Controller
         }
 
         // ✅ セッションカート削除
-        session()->forget('cart');
-
         DB::commit();
+
+        session()->put('cart', []);
+
+        // session()->forget('cart');
 
         session(['orderNumber' => $order_id]);
 
@@ -55,6 +58,7 @@ class OrderController extends Controller
 
     } catch (\Exception $e) {
         DB::rollBack();
+
         return back()->withErrors(['error' => '注文処理に失敗']);
     }
 }

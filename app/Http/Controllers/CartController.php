@@ -71,7 +71,7 @@ class CartController extends Controller
             }
         }
  
-        return redirect('/cart')->with('success', 'カートから商品を削除しました。');
+        return redirect('/cart')->with('success', 'カートから商品を削除しました');
     }
 
     protected function sessionCartToDatabase(int $userId, array $sessionCart)

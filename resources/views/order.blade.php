@@ -12,8 +12,6 @@
                 <img src="{{ asset('images/order.jpg') }}" alt="orderLogo" style="max-width: 250px; height:auto;">
             </h1>
 
-            <hr>
-
             <h3>お客様情報を入力してください</h3>
 
             {{-- ✅ エラー表示 --}}
@@ -27,39 +25,39 @@
             </div>
             @endif
 
-            <form action="{{ route('order.complete') }}" method="POST">
+            <form action="/order" method="POST">
                 @csrf
 
-                <table border="1">
+                <table>
                     <tr>
                         <th>お名前</th>
                         <td>
-                            <input type="text" name="name" value="{{ old('name') }}">
+                            <input type="text" name="name" value="{{ old('name') }}" placeholder="お名前">
                         </td>
                     </tr>
                     <tr>
                         <th>住所</th>
                         <td>
-                            <input type="text" name="address" value="{{ old('address') }}">
+                            <input type="text" name="address" value="{{ old('address') }}" placeholder="住所">
                         </td>
                     </tr>
                     <tr>
                         <th>電話番号</th>
                         <td>
-                            <input type="text" name="tel" value="{{ old('tel') }}">
+                            <input type="text" name="tel" value="{{ old('tel') }}" placeholder="電話番号">
                         </td>
                     </tr>
                     <tr>
                         <th>e-mail</th>
                         <td>
-                            <input type="email" name="email" value="{{ old('email') }}">
+                            <input type="email" name="email" value="{{ old('email') }}" placeholder="メールアドレス">
                         </td>
                     </tr>
                 </table>
 
                 <br>
 
-                <button type="submit">
+                <button type="submit" class="btn">
                     注文する（合計：{{ number_format($total) }}円）
                 </button>
             </form>

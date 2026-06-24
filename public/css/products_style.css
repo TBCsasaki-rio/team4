@@ -8,7 +8,7 @@
     justify-content: flex-start;
     gap: 5px;
     padding-left: 20px;
-    border-bottom: 2px solid #4a6fa5;
+    /* border-bottom: 2px solid #4a6fa5; */
 }
 .category {
     border: 2px solid transparent;
@@ -37,14 +37,11 @@
     color: #4a6fa5;
 }
 
-/* ヘッダー以外の全体を覆うflexBox
-サイドバーとmainコンテンツが属する */
+/* 画面いっぱいに高さを確保する */
 .content-layout-wrapper {
     display: flex;
-    border: 2px solid #4a6fa5;
-    border-top: none;
-    padding: 20px;
-    background-color: #fff;
+    height: calc(100vh - 150px); /* ヘッダーやカテゴリ等の高さを引いた値 */
+    overflow: hidden;           /* 親要素からはみ出さないようにする */
 }
 .sidebar {
     width: 250px;
@@ -107,6 +104,8 @@ body {
 
 .main-content {
     flex-grow: 1;
+    margin-top: -20px;
+    border: 2px solid #4a6fa5;
 }
 
 .content-header {
@@ -153,6 +152,7 @@ main {
     gap: 10px;
 }
 
+/* オススメ商品 */
 .product {
     /* 試しに無しでやってみる */
     /* margin: 10px; */
@@ -163,6 +163,7 @@ main {
     border: 1px soild #fafafa;
     padding: 10px;
     border-radius: 6px;
+    margin-top: 10px;
 }
 
 .product-image {
@@ -180,11 +181,6 @@ main {
     flex-direction: column;
     justify-content: flex-end;
 }
-
-.product-price {
-    
-}
-
 
 /* 商品一覧画面の商品一覧の枠組み */
 .main-content {

@@ -1,0 +1,104 @@
+/* 1. 画面全体を中央揃えの箱にする設定 */
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;      /* 画面の縦幅いっぱいに広げる */
+    display: flex;
+    justify-content: center; /* 左右の中央揃え */
+    align-items: center;     /* 上下の中央揃え */
+    background-color: #ffffff; /* （任意）背景色 */
+    flex-direction: column; /* 縦並びにする */
+    min-height: 100vh;      /* フッターを最下部に押し下げる */
+}
+
+/* 2. 中央に配置されるメインエリアの装飾 */
+main {
+    width: 100%;
+    max-width: 400px;        /* ログインフォームが広がりすぎないように制限 */
+    padding: 20px;
+    background: #ffffff;     /* 白背景 */
+    border-radius: 8px;      /* 角丸 */
+    box-shadow: 0 4px 17px rgba(100, 149, 237, 1); /* 軽い影（立体感） */
+    box-sizing: border-box;
+}
+
+/* buttonの装飾 */
+.button {
+    display: flex;
+    justify-content: center; /* 左右の中央揃え */
+    margin-top: 20px;       /* 上に少し余白を作る */
+}
+/* ボタン自体の見た目も整える場合 */
+.button button {
+    padding: 6px 20px;
+    cursor: pointer;
+}
+
+/* footerの中央揃え */
+.footer {
+    display: flex;
+    justify-content: center; /* 左右の中央揃え */
+}
+
+/* カート画面のbody */
+.cart {
+    text-align: center;
+}
+
+/* 商品追加・削除のメッセージ */
+.alertSuccess {
+    color: red;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+/* テーブルタイトル */
+.tableTitle {
+    margin-top: 0px;
+}
+
+/* テーブル内の装飾 */
+.cartTable {
+    width: 100%;
+    border-collapse: separate; /* 角丸を効かせるためにseparateにする */
+    border-spacing: 0;
+    border: 2px solid #cce7ff; /* 外枠は優しいパステルブルー */
+    border-radius: 12px;       /* テーブル全体の角を丸くする */
+    overflow: hidden;          /* 中の背景が角丸からはみ出るのを防ぐ */
+    font-family: sans-serif;
+    margin-bottom: 25px;
+}
+.cartTable th {
+    background-color: #e6f2ff; /* ヘッダーは薄い水色 */
+    color: #2b6cb0;            /* 文字色は濃いめのファイアブルー（視認性確保） */
+    padding: 16px 20px;
+    font-weight: bold;
+    border-bottom: 2px solid #cce7ff;
+    white-space: nowrap;    /* データ行の文字も自動改行を禁止 */
+}
+
+.cartTable td {
+    padding: 18px 25px;
+    color: #333;
+    background-color: #fff;
+    border-bottom: 2.5px dashed #d8ecff; /* 行の区切りは可愛い「水色の点線」 */
+    text-align: center;
+    white-space: nowrap;  /* データ行の文字も自動改行を禁止 */
+}
+
+/* 一番下の行は区切り線を消す */
+.cartTable tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* テーブル内の削除ボタンの装飾 */
+.deleteBtn {
+    background-color: #2b6cb0;
+    color: #ffffff;
+    border: none;
+    padding: 6px 10px;
+    cursor: pointer;
+    border-radius: 8px;
+}
