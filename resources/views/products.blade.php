@@ -48,7 +48,8 @@
 
     <div class="content-layout-wrapper">
         <aside class="sidebar">
-            <div class="banner-area">
+            <div class="banner-area" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                <img src="{{ asset('images/recommend.png') }}" alt="recommendLogo" style="max-width: 230px; height:auto;">
                 <div class="product">
 
                     <div class="badge">
