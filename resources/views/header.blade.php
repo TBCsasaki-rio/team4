@@ -14,11 +14,6 @@
 
         }
 
-        .shop-logo img {
-            width: 130px;
-            height: 40px;
-        }
-
         .header-search {
             flex: 1;
             max-width: 600px;
@@ -168,14 +163,12 @@
         .mypage-menu .logout-link {
             border-top: 1px solid #eee;
         }
-
-        
-        
     </style>
 </head>
 
 <header>
     <div class="header-logo">
+        <!-- 商品一覧画面に遷移する -->
         <a href="/products">
             <img src="{{ asset('images/home_logo.jpg') }}" alt="home_logo" style="max-width: 50px; height:50px;">
         </a>
@@ -183,34 +176,36 @@
 
     <div class="header-search">
         <form action="/products/search" method="post" class="search-form" style="display: flex; justify-content: center; align-items: center;">
-        @csrf    
-        <input type="text" name="keyword" class="search-input" placeholder="商品名" value="{{ old('keyword') }}">
+            @csrf    
+            <input type="text" name="keyword" class="search-input" placeholder="商品名" value="{{ old('keyword') }}">
         </form>
     </div>
-        <button class="searchBtn">検索</button>
+    <button class="searchBtn">検索</button>
 
     <div class="header-actions">
+        <!-- カート画面に遷移する -->
         <a href="/cart" class="action-item">
             <span class="action-icon">
-                <img src="{{ asset('images/shopping_cart.png') }}">
+                <img src="{{ asset('images/shopping_cart.png') }}" alt="shopping_cartLogo" style="max-width: 50px; height: 50px;">
                 @if(session('cart'))
                 <span class="cart-badge">{{ $cartCount }}</span>
                 @endif
             </span>
-            <span class="action-text">カートを見る</span>
         </a>
+
+        <!-- お気に入り画面に遷移する -->
         <a href="/favorites" class="action-item">
             <span class="action-icon">
-                <img src="{{ asset('images/favorite.png') }}">
+                <img src="{{ asset('images/favorite.png') }}" alt="favoriteLogo" style="max-width: 50px; height: 50px;">
             </span>
-            <span class="action-text">お気に入り</span>
         </a>
+
+        <!-- マイページ画面に遷移する -->
         <div class="mypage-wrapper" style="position: relative;">
             <button id="mypage-toggle" class="action-item">
                 <span class="action-icon">
-                    <img src="{{ asset('images/person.png') }}">
+                    <img src="{{ asset('images/person.png') }}" alt="personLogo" style="max-width: 50px; height: 50px;">
                 </span>
-                <span class="action-text">マイページ</span>
             </button>
             <div id="mypage-box" class="mypage-dropdown">
                 @auth
@@ -220,7 +215,6 @@
                     <li><a href="/mypage/history">注文履歴</a></li>
                     <li><a href="/mypage/settings">設定</a></li>
                 </ul>
-
                 
                 @endauth
 
@@ -232,18 +226,15 @@
                 </ul>
                 @endguest
             </div>
+
         </div>
-    
-                <div class="logout-link">
-                    <form action="/logout" method="post" style="margin: 0;">
-                        @csrf
-                        <button type="submit" class="action-item">
-                             <span class="action-icon">
-                    <img src="{{ asset('images/logout.png') }}">
-                </span>
-                <span class="action-text">ログアウト</span>
-                    </form>
-                </div>
+            
+        <!-- ログアウトする -->
+        <a href="/login" class="action-item">
+            <span class="action-icon">
+                <img src="{{ asset('images/logout.png') }}" alt="logoutLogo" style="max-width: 50px; height: 50px;">
+            </span>
+        </a>
     </div>
 
     <script>
