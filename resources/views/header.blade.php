@@ -44,7 +44,7 @@
             background-color: #4682b4;
             color: #ffffff;
             border: none;
-            padding: 4px;
+            padding: 10px;
             font-size: 0.8rem;
             font-weight: bold;
             cursor: pointer;
@@ -182,9 +182,9 @@
         <form action="/products/search" method="post" class="search-form" style="display: flex; justify-content: center; align-items: center;">
         @csrf    
         <input type="text" name="keyword" class="search-input" placeholder="商品名" value="{{ old('keyword') }}">
-            <button class="searchBtn">検索</button>
         </form>
     </div>
+        <button class="searchBtn">検索</button>
 
     <div class="header-actions">
         <a href="/cart" class="action-item">
