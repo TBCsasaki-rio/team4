@@ -235,7 +235,7 @@
                     <form action="/logout" method="post" style="margin: 0;">
                         @csrf
                         <button type="submit" class="action-item">
-                             <span class="action-icon">
+                 <span class="action-icon">
                     <img src="{{ asset('images/person.png') }}">
                 </span>
                 <span class="action-text">ログアウト</span>
