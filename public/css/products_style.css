@@ -8,7 +8,7 @@
     justify-content: flex-start;
     gap: 5px;
     padding-left: 20px;
-    border-bottom: 2px solid #4a6fa5;
+    /* border-bottom: 2px solid #4a6fa5; */
 }
 .category {
     border: 2px solid transparent;
@@ -41,7 +41,6 @@
 サイドバーとmainコンテンツが属する */
 .content-layout-wrapper {
     display: flex;
-    border: 2px solid #4a6fa5;
     border-top: none;
     padding: 20px;
     background-color: #fff;
@@ -107,6 +106,8 @@ body {
 
 .main-content {
     flex-grow: 1;
+    margin-top: -20px;
+    border: 2px solid #4a6fa5;
 }
 
 .content-header {
@@ -180,11 +181,6 @@ main {
     flex-direction: column;
     justify-content: flex-end;
 }
-
-.product-price {
-    
-}
-
 
 /* 商品一覧画面の商品一覧の枠組み */
 .main-content {
