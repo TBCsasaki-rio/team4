@@ -168,6 +168,9 @@
         .mypage-menu .logout-link {
             border-top: 1px solid #eee;
         }
+
+        
+        
     </style>
 </head>
 
@@ -235,8 +238,8 @@
                     <form action="/logout" method="post" style="margin: 0;">
                         @csrf
                         <button type="submit" class="action-item">
-                 <span class="action-icon">
-                    <img src="{{ asset('images/person.png') }}">
+                             <span class="action-icon">
+                    <img src="{{ asset('images/logout.png') }}">
                 </span>
                 <span class="action-text">ログアウト</span>
                     </form>
