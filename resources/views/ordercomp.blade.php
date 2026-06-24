@@ -5,7 +5,7 @@
     <link rel="icon" href="{{ asset('images/titleLogo.jpg') }}" type="image/jpeg">
     <title>注文完了</title>
 
-    {{-- CSS --}}
+    {{-- CSS --}}   
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 
@@ -24,4 +24,5 @@
         </main>
     </div>
     @include('footer')
+
 </body>
