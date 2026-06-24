@@ -1,8 +1,10 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+
 class OrderController extends Controller
 {
     public function order(Request $request)
@@ -62,44 +64,35 @@ class OrderController extends Controller
             session(['orderNumber' => $order_id]);
 
             return redirect('/orderComp');
-
         } catch (\Exception $e) {
             DB::rollBack();
             return back()->withErrors(['error' => '注文処理に失敗しました']);
         }
-<<<<<<< HEAD
-        
-=======
-
->>>>>>> hamaji2
     }
 
+    public function index()
+    {
+        $user_id = 1;
 
+        $cartItems = DB::table('cart_items as c')
+            ->join('products as p', 'c.product_id', '=', 'p.id')
+            ->select('c.quantity', 'p.price')
+            ->where('c.user_id', $user_id)
+            ->get();
+
+        $total = $cartItems->sum(function ($item) {
+            return $item->price * $item->quantity;
+        });
+
+        return view('order', compact('total'));
+    }
+
+    // ✅ 注文完了画面（これが追加部分）
+    public function orderComp()
+    {
+        $orderNumber = session('orderNumber');
+
+        return view('orderComp', compact('orderNumber'));
+    }
     
-public function index()
-{
-    $user_id = 1;
-
-    $cartItems = DB::table('cart_items as c')
-        ->join('products as p', 'c.product_id', '=', 'p.id')
-        ->select('c.quantity', 'p.price')
-        ->where('c.user_id', $user_id)
-        ->get();
-
-    $total = $cartItems->sum(function ($item) {
-        return $item->price * $item->quantity;
-    });
-
-    return view('order', compact('total'));
-}
-
-// ✅ 注文完了画面（これが追加部分）
-public function orderComp()
-{
-    $orderNumber = session('orderNumber');
-
-    return view('orderComp', compact('orderNumber'));
-}
-
-
 }

@@ -127,7 +127,7 @@ class AccountController extends Controller
         Auth::Login($user);
 
         // 商品一覧画面に遷移
-        return redirect()->route('products');
+        return redirect('/products');
     }
 
 
