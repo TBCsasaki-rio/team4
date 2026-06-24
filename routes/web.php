@@ -46,8 +46,6 @@ Route::get('/order', [OrderController::class, 'index']);
 
 Route::post('/order', [OrderController::class, 'order']);
 
-Route::get('/ordercomp', [OrderController::class, 'ordercomp']);
-
-Route::post('/order/complete', [MailController::class, 'complete'])
-    ->name('order.complete');
+Route::get('/orderComp', [OrderController::class, 'orderComp']);
+Route::post('/orderComp', [MailController::class, 'complete']);
 

@@ -25,7 +25,7 @@
             </div>
             @endif
 
-            <form action="{{ route('order.complete') }}" method="POST">
+            <form action="/order" method="POST">
                 @csrf
 
                 <table>
