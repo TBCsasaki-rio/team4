@@ -18,7 +18,7 @@
                 <div class="main-image">
                     <a href="/products/{{$product['id']}}">
                         <img
-                            src="/image/products/{{$product['id']}}/{{ $product->mainImage->url }}"
+                            src="/images/product_images/{{$product->mainImage->url}}"
                             alt="商品画像"
                             class="product-image">
                     </a>

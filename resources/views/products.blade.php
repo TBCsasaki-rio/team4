@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" href="{{ asset('images/titleLogo.jpg') }}" type="image/jpeg">
     <title>商品一覧</title>
     <link rel="stylesheet" href="/css/products_style.css">
     <style>
@@ -51,14 +52,13 @@
             <div class="banner-area" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
                 <img src="{{ asset('images/recommend.png') }}" alt="recommendLogo" style="max-width: 230px; height:auto;">
                 <div class="product">
-
                     <div class="badge">
                         <span class="badge top1">TOP1</span>
                     </div>
 
                     <a href="/products/{{$top1product->id}}">
                         <img
-                            src="/image/products/{{$top1product->id}}/{{ $top1product->mainImage->url }}"
+                            src="/images/product_images/{{$top1product->mainImage->url}}"
                             alt="商品画像"
                             class="product-image">
                     </a>
@@ -116,7 +116,7 @@
                 <div class="product">
                     <a href="/products/{{$product['id']}}">
                         <img
-                            src="/image/products/{{$product['id']}}/{{ $product->mainImage->url }}"
+                            src="/images/product_images/{{$product->mainImage->url}}"
                             alt="商品画像"
                             class="product-image">
                     </a>
