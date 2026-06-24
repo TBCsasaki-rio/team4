@@ -44,7 +44,7 @@
             background-color: #4682b4;
             color: #ffffff;
             border: none;
-            padding: 4px;
+            padding: 10px;
             font-size: 0.8rem;
             font-weight: bold;
             cursor: pointer;
@@ -182,9 +182,9 @@
         <form action="/products/search" method="post" class="search-form" style="display: flex; justify-content: center; align-items: center;">
         @csrf    
         <input type="text" name="keyword" class="search-input" placeholder="商品名" value="{{ old('keyword') }}">
-            <button class="searchBtn">検索</button>
         </form>
     </div>
+        <button class="searchBtn">検索</button>
 
     <div class="header-actions">
         <a href="/cart" class="action-item">
@@ -216,14 +216,9 @@
                     <li><a href="/mypage/profile">会員情報変更</a></li>
                     <li><a href="/mypage/history">注文履歴</a></li>
                     <li><a href="/mypage/settings">設定</a></li>
-                    <li class="logout-link">
-                        <form action="/logout" method="POST" style="margin: 0;">
-                            @csrf
-                            <button type="submit" style="width: 100%; text-align: left; padding: 12px 15px; background: none; border: none; font-size: 13px; color: #333; cursor: pointer;">
-                                ログアウト</button>
-                        </form>
-                    </li>
                 </ul>
+
+                
                 @endauth
 
                 @guest
@@ -235,6 +230,17 @@
                 @endguest
             </div>
         </div>
+    
+                <div class="logout-link">
+                    <form action="/logout" method="post" style="margin: 0;">
+                        @csrf
+                        <button type="submit" class="action-item">
+                             <span class="action-icon">
+                    <img src="{{ asset('images/person.png') }}">
+                </span>
+                <span class="action-text">ログアウト</span>
+                    </form>
+                </div>
     </div>
 
     <script>
