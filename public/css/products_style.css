@@ -152,6 +152,7 @@ main {
     gap: 10px;
 }
 
+/* オススメ商品 */
 .product {
     /* 試しに無しでやってみる */
     /* margin: 10px; */
@@ -162,6 +163,7 @@ main {
     border: 1px soild #fafafa;
     padding: 10px;
     border-radius: 6px;
+    margin-top: 10px;
 }
 
 .product-image {
