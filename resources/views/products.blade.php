@@ -48,9 +48,8 @@
 
     <div class="content-layout-wrapper">
         <aside class="sidebar">
-            <div class="banner-area">
+            <div class="barnner-area">
                 <div class="product">
-
                     <div class="badge">
                         <span class="badge top1">TOP1</span>
                     </div>
