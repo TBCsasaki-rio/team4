@@ -37,13 +37,11 @@
     color: #4a6fa5;
 }
 
-/* ヘッダー以外の全体を覆うflexBox
-サイドバーとmainコンテンツが属する */
+/* 画面いっぱいに高さを確保する */
 .content-layout-wrapper {
     display: flex;
-    border-top: none;
-    padding: 20px;
-    background-color: #fff;
+    height: calc(100vh - 150px); /* ヘッダーやカテゴリ等の高さを引いた値 */
+    overflow: hidden;           /* 親要素からはみ出さないようにする */
 }
 .sidebar {
     width: 250px;

@@ -69,7 +69,6 @@ class ProductController extends Controller
             return redirect('/products');
         }
 
-
         return view('productDetail', compact('product'));
     }
 

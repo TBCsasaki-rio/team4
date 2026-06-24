@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -20,7 +21,7 @@ class OrderController extends Controller
         try {
             DB::beginTransaction();
 
-            $user_id = 1;
+            $user_id = Auth::check() ? Auth::id() : 1;
 
             // ✅ カート取得
             $cartItems = DB::table('cart_items as c')
@@ -57,6 +58,7 @@ class OrderController extends Controller
 
             // ✅ カート削除
             DB::table('cart_items')->where('user_id', $user_id)->delete();
+            session()->put('cart', []);
 
             DB::commit();
 
@@ -72,7 +74,7 @@ class OrderController extends Controller
 
     public function index()
     {
-        $user_id = 1;
+        $user_id = Auth::check() ? Auth::id() : 1;
 
         $cartItems = DB::table('cart_items as c')
             ->join('products as p', 'c.product_id', '=', 'p.id')
