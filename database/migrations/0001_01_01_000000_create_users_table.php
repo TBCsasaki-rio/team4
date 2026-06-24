@@ -1,16 +1,11 @@
-<<<<<<< HEAD
 <?php
-=======
->>>>>>> hamaji2
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
- 
-<<<<<<< HEAD
+
 class CreateUsersTable extends Migration {
-=======
-return new class extends Migration {
->>>>>>> hamaji2
+
     public function up(): void
     {
         // users
