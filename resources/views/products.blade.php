@@ -56,7 +56,7 @@
 
                     <a href="/products/{{$top1product->id}}">
                         <img
-                            src="/image/products/{{$top1product->id}}/{{ $top1product->mainImage->url }}"
+                            src="/images/product_images/{{$top1product->mainImage->url}}"
                             alt="商品画像"
                             class="product-image">
                     </a>
@@ -114,7 +114,7 @@
                 <div class="product">
                     <a href="/products/{{$product['id']}}">
                         <img
-                            src="/image/products/{{$product['id']}}/{{ $product->mainImage->url }}"
+                            src="/images/product_images/{{$product->mainImage->url}}"
                             alt="商品画像"
                             class="product-image">
                     </a>
