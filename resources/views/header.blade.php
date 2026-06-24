@@ -68,6 +68,7 @@
             color: #333333;
             width: 64px;
         }
+
         .action-icon button {
             background-color: none;
             border: none;
@@ -88,20 +89,25 @@
         .cart-badge {
             position: absolute;
             /* アイコンの中央に配置するための設定 */
-            top: 20%;  /* 上からの位置。画像によって 30% や 50% に微調整してください */
-            left: 50%; /* 左から50%（中央） */
-            transform: translate(-50%, -50%); /* 基準点を文字のド真ん中にズラす */
+            top: 20%;
+            /* 上からの位置。画像によって 30% や 50% に微調整してください */
+            left: 50%;
+            /* 左から50%（中央） */
+            transform: translate(-50%, -50%);
+            /* 基準点を文字のド真ん中にズラす */
 
-            color: #f08804; /* Amazon風のオレンジ色 */
-            font-size: 13px; /* アイコンの中に入れるため、少し大きめが見やすいです */
+            color: #f08804;
+            /* Amazon風のオレンジ色 */
+            font-size: 13px;
+            /* アイコンの中に入れるため、少し大きめが見やすいです */
             font-weight: bold;
-            
+
             /* もしカート画像の色（黒など）と被って見えにくい場合は、白いフチ取り（光彩）をつけると見やすくなります */
-            text-shadow: 
-                -1px -1px 0 #fff,  
-                 1px -1px 0 #fff,
-                -1px  1px 0 #fff,
-                 1px  1px 0 #fff;
+            text-shadow:
+                -1px -1px 0 #fff,
+                1px -1px 0 #fff,
+                -1px 1px 0 #fff,
+                1px 1px 0 #fff;
         }
 
         #mypage-toggle {
@@ -174,8 +180,8 @@
 
     <div class="header-search">
         <form action="/products/search" method="post" class="search-form" style="display: flex; justify-content: center; align-items: center;">
-            @csrf
-            <input type="text" name="keyword" class="search-input" placeholder="商品名" value="{{ old('keyword') }}">
+        @csrf    
+        <input type="text" name="keyword" class="search-input" placeholder="商品名" value="{{ old('keyword') }}">
             <button class="searchBtn">検索</button>
         </form>
     </div>
@@ -185,7 +191,7 @@
             <span class="action-icon">
                 <img src="{{ asset('images/shopping_cart.png') }}">
                 @if(session('cart'))
-                    <span class="cart-badge">{{ count(session()->get('cart',[])) }}</span>
+                <span class="cart-badge">{{ $cartCount }}</span>
                 @endif
             </span>
             <span class="action-text">カートを見る</span>
@@ -204,13 +210,29 @@
                 <span class="action-text">マイページ</span>
             </button>
             <div id="mypage-box" class="mypage-dropdown">
-                <div class="mypage-header">ようこそ、ゲスト様</div>
+                @auth
+                <div class="mypage-header">ようこそ、{{ Auth::user()->name }}様</div>
                 <ul class="mypage-menu">
                     <li><a href="/mypage/profile">会員情報変更</a></li>
                     <li><a href="/mypage/history">注文履歴</a></li>
                     <li><a href="/mypage/settings">設定</a></li>
-                    <li class="logout-link"><a href="/logout">ログアウト</a></li>
+                    <li class="logout-link">
+                        <form action="/logout" method="POST" style="margin: 0;">
+                            @csrf
+                            <button type="submit" style="width: 100%; text-align: left; padding: 12px 15px; background: none; border: none; font-size: 13px; color: #333; cursor: pointer;">
+                                ログアウト</button>
+                        </form>
+                    </li>
                 </ul>
+                @endauth
+
+                @guest
+                <div class="mypage-header">ようこそ、ゲスト様</div>
+                <ul class="mypage-menu">
+                    <li><a href="/login">ログイン</a></li>
+                    <li><a href="/register">新規会員登録</a></li>
+                </ul>
+                @endguest
             </div>
         </div>
     </div>

@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
-
 use App\Models\Product;
 use App\Models\CartItem;
  
@@ -51,7 +50,7 @@ class CartController extends Controller
         session()->put('cart', $cart);
 
         // if (Auth::check()) {
-        if (true) {
+        if (Auth::check()) {
             $this->sessionCartToDatabase(Auth::id(), $cart);
         }
 

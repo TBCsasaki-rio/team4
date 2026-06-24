@@ -17,7 +17,10 @@ class HeaderComposer {
             return Category::get();
         });
 
+        $totalQuantity = collect(session()->get('cart', []))->sum('quantity');
+
         // viewと変数を紐づけ
-        $view->with('categories', $categories);
+        $view->with('categories', $categories)
+            ->with('cartCount', $totalQuantity);
     }
 }

@@ -146,7 +146,7 @@ main {
     /* 複数行に折り返す設定 */
     flex-wrap: wrap;
     /* ボックス内要素の配置設定（右寄せやセンタリングなど） */
-    justify-content: space-between;
+    justify-content: flex-start;
     /* 内側の余白 */
     padding: 10px;
     /* コンテナ内の要素間の隙間 */

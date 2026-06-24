@@ -8,7 +8,6 @@ use App\Servicies\RankingService;
 use Illuminate\Http\Request;
 use Ramsey\Collection\Collection;
 
-use function PHPUnit\Framework\isEmpty;
 
 class ProductController extends Controller
 {
@@ -67,35 +66,25 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
         if ($product === null) {
-            echo ('すみません。商品が見つかりませんでした。');
             return redirect('/products');
         }
-        
+
 
         return view('productDetail', compact('product'));
     }
 
-    // 1. 商品検索：keyword, maxprice
+    // 1. 商品検索：keyword
     // 2. 対象商品を一覧表示
     public function search(Request $request)
     {
+        $keyword = $request->input('keyword', null);        
+        $query = Product::query();
 
-        $keyword = $request->input('keyword', null);
-        echo $keyword;
-        $maxprice = $request['maxprice'];
-
-        if ($keyword === null and $maxprice === null) {
-            $searchedProducts = Product::get();
-        } else if ($keyword != null and isEmpty($maxprice)) {
-            $searchedProducts = Product::where('name', 'Like', "%{$keyword}%")->get();
-        } else if ($keyword === null and !isEmpty($maxprice)) {
-            $searchedProducts = Product::where('price', '<=', $maxprice)->get();
-        } else {
-            $searchedProducts =
-                Product::where('name', 'Like', "%{$keyword}%")
-                ->where('price', '<=', $maxprice)
-                ->get();
+        if (!empty($keyword)) {
+            $query->where('name', 'Like', "%{$keyword}%");
         }
+        $products = $query->get();
+
         // 現在選択中のソート条件を取得
         $currentSort = $request->input('sort', "new");
 
@@ -113,8 +102,8 @@ class ProductController extends Controller
         return view('products')
             ->with('categories', $categories)
             ->with('currentSort', $currentSort)
-            ->with('products', $searchedProducts)
-            ->with('top1product',$top1product);
+            ->with('products', $products)
+            ->with('top1product', $top1product);
     }
 
     // サイドバーの条件をもとにProductにクエリを送り、
