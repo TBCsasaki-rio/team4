@@ -21,7 +21,8 @@
 
         @if(empty($cart))
         <div class="card p-5 text-center">
-            <p class="nullMsg" style="font-weight: 600;">カートは空です</p>
+            <p class="nullMsg" style="font-weight: 700; font-size: 20px; color: red; margin-top: 0px; margin-bottom: 5px;">カートは空です</p>
+            <img src="{{ asset('images/nullCart.png') }}" alt="nullCartLogo" style="max-width: 250px; height:auto; margin-bottom:30px;">
             <div class="mt-3">
                 <a href="/products" class="btn btn-primary">ショッピングを続ける</a>
             </div>
