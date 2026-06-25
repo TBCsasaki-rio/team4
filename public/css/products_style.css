@@ -102,15 +102,11 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.main-content {
-    flex-grow: 1;
-    margin-top: -20px;
-    border: 2px solid #4a6fa5;
-}
-
+/* 対象商品数・新着順等のプルダウン */
 .content-header {
     display: flex;
     justify-content: space-between;
+    margin: 20px 25px;
 }
 
 .sort-select {
@@ -120,12 +116,15 @@ body {
 }
 
 .categories {
-    display: flex;
     flex-direction: row;
-    justify-content: center;
     gap: 10px;
+    padding: 0px;
 }
 
+.shopContents {
+    flex-grow: 1;
+    border: 2px solid #4a6fa5;
+}
 
 main {
     /* スペースをどう割り振りするかの設定らしい、記事を参照して */
@@ -148,6 +147,7 @@ main {
     justify-content: flex-start;
     /* 内側の余白 */
     padding: 10px;
+    padding-top: 0px;
     /* コンテナ内の要素間の隙間 */
     gap: 10px;
 }
