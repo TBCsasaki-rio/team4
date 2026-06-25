@@ -37,26 +37,6 @@
         </form>
     </div>
 
-    <!-- カテゴリ一覧 -->
-    <div class="tab-wrapper">
-        <div class="categories">
-
-            <div class="category {{ !request()->has('categoryId') ? 'active' : ''}}">
-                <a href="/products">全商品</a>
-            </div>
-
-            @foreach ($categories as $category)
-            <div class="category {{ request()->get('categoryId') == $category['id'] ? 'active' : ''}}">
-                <a href="/products?categoryId={{ $category['id'] }}"
-                    style="margin-right: 5px;">
-                    {{ $category['name'] }}
-                </a>
-            </div>
-            @endforeach
-        </div>
-    </div>
-
-
     <div class="content-layout-wrapper">
         <aside class="sidebar">
 
