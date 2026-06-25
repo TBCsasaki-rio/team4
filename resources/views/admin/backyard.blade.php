@@ -13,6 +13,8 @@
 <body>
     <h1>商品管理画面です</h1>
     
+    <a href="/admin/backyard/add">新規登録</a>
+
     <table border="1">
         <tr>
             <th>商品ID</th>
@@ -20,6 +22,7 @@
             <th>商品名</th>
             <th>価格</th>
         </tr>
+        
         @foreach($products as $product)
         <tr>
             <td>
@@ -37,6 +40,12 @@
             <td>
                 <form action="{{route('backyard.edit', ['id' => $product->id]) }}" method="get">
                     <button>更新</button>
+                </form>
+            </td>
+            <td>
+                <form action="{{route('backyard.remove', ['id' => $product->id]) }}" method="post">
+                    @csrf
+                    <button>削除</button>
                 </form>
             </td>
         </tr>

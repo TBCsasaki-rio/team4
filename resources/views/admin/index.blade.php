@@ -16,14 +16,14 @@
         <ul>
             <span class="option-text">
                 <li>
-                    <a href="admin/backyard">
+                    <a href="/admin/backyard">
                         <h2>商品の管理</h2>
                     </a>
                 </li>
             </span>
             <span class="option-text">
                 <li>
-                    <a href="admin/ordered">
+                    <a href="/admin/ordered">
                         <h2>オーダーの履歴</h2>
                     </a>
                 </li>

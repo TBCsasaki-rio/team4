@@ -11,10 +11,16 @@ class ProductImage extends Model
 
     public $timestamps = false;
 
+    protected $fillable = ['url', 'is_main', 'product_id'];
+
     // なぜかデータベースにtinyInt型(0 - 1)で登録されてしまっているので、
     // booleanに変換しています（原因：LaravelとMysqlの問題らしい)
     protected $casts =[
         'is_main' => 'boolean',
     ];
+
+    public function product() {
+        return $this->belongsTo(Product::class);
+    }
     
 }
