@@ -42,5 +42,6 @@
         </tr>
         @endforeach
     </table>
+    <a href="/admin">Admin Indexに戻る</a>
 </body>
 </html>

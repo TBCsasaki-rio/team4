@@ -43,7 +43,8 @@
         <aside class="sidebar">
             <!-- 値段検索 -->
             <div class="search-price">
-                <form action="/products/searchPrice">
+                <form action="/products/searchPrice" method="post">
+                    @csrf
                     <span class="label-text" style="color: #ff85a2; font-weight: 600;">値段で検索<br></span>
                     <input name="minprice" value="{{old('minprice')}}" placeholder="下限" size="5">
                     <span class="span-text" style="margin: 0px;">～</span>

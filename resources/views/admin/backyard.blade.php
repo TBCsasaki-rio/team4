@@ -51,5 +51,6 @@
         </tr>
         @endforeach
     </table>
+    <a href="/products">商品一覧を確認する</a>
 </body>
 </html>

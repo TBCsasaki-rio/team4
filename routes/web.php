@@ -35,7 +35,7 @@ Route::post('/logout', [AccountController::class, 'logout'])->name('logout');
 Route::get('/products', [ProductController::class, 'products']);
 Route::get('/products/{id}', [ProductController::class, 'details']);
 Route::post('/products/search', [ProductController::class, 'search']);
-Route::post('/products/conditionSearch', [ProductController::class, 'conditionSearch']);
+Route::post('/products/searchPrice', [ProductController::class, 'searchPrice']);
 
 // カート機能
 Route::get('/cart',[CartController::class,'index']);

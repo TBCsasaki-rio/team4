@@ -76,7 +76,7 @@ class ProductController extends Controller
     // 2. 対象商品を一覧表示
     public function search(Request $request)
     {
-        $keyword = $request->input('keyword', null);        
+        $keyword = $request->input('keyword', null);
         $query = Product::query();
 
         if (!empty($keyword)) {
@@ -110,48 +110,31 @@ class ProductController extends Controller
     // 1. checkBoxから☑の付いたvalue配列を受け取る：0to499, 500to1000 など
     // 2. クエリ用に文字列を変換する
     // 3. queryBuilderを作成する
-    public function conditionSearch(Request $request)
+    public function searchPrice(Request $request)
     {
-        $price_ranges = $request->input('filter-price-range', []);
-        $category_ids = $request->input('filter-category', []);
-
-        if (count($price_ranges) === 0 and count($category_ids) === 0) {
-            return redirect("/products");
-        }
-
-        // パースして有効なレンジ集める
-        $parsed = [];
+        $minprice = $request->input('minprice');
+        $maxprice = $request->input('maxprice');
         $query = Product::query();
 
-        if (count($price_ranges) > 0) {
-            foreach ($price_ranges as $price_range) {
-                // 0to499 -> 0, 499 に分けて、変数に格納
-                [$minprice, $maxprice] = explode('to', $price_range);
-                // is_numeric() 数字であるかを検査
-                $minprice = is_numeric($minprice) ? (int)$minprice : null;
-                $maxprice = is_numeric($maxprice) ? (int)$maxprice : null;
-                // 配列に要素追加
-                $parsed[] = ['minprice' => $minprice, 'maxprice' => $maxprice];
+        // is_numeric() 数字であるかを検査
+        $minprice = is_numeric($minprice) ? (int)$minprice : null;
+        $maxprice = is_numeric($maxprice) ? (int)$maxprice : null;
 
-                $query->where(function ($q) use ($parsed) {
-                    foreach ($parsed as $range) {
-                        if ($range['maxprice'] === null) {
-                            $q->orWhere('price', '>=', $range['minprice']);
-                        } else {
-                            $q->orWhereBetween('price', [$range['minprice'], $range['maxprice']]);
-                        }
-                    }
-                });
-            }
+        $range = ['minprice' => $minprice, 'maxprice' => $maxprice];
+
+        if ($range['minprice'] === null and $range['maxprice'] === null){
+            return redirect('/products');
         }
 
-        if (count($category_ids) > 0) {
-            foreach ($category_ids as $category_id) {
-                $query->where(function ($q) use ($category_id) {
-                    $q->orWhere('category_id', $category_id);
-                });
+        $query->where(function ($q) use ($range) {
+            if ($range['maxprice'] === null) {
+                $q->orWhere('price', '>=', $range['minprice']);
+            } else if ($range['minprice'] === null) {
+                $q->orWhere('price', '<=', $range['maxprice']);
+            } else {
+                $q->orWhereBetween('price', [$range['minprice'], $range['maxprice']]);
             }
-        }
+        });
 
         $products = $query->get();
         $categories = Category::get();
