@@ -37,13 +37,15 @@
     color: #4a6fa5;
 }
 
-/* 値段検索 */
 .search-price {
     display: flex;
     justify-content: center;
     text-align: left;
-    margin-top: 30px;
+    margin-left: 20px;
+    margin-bottom: 20px;
 }
+
+
 .search-price .span-text {
     margin-left: 10px;
     text-align: center;

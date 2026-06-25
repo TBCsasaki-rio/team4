@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\User;    // DB関係のファイル
@@ -25,6 +26,7 @@ class AccountController extends Controller
     // ログイン処理
     public function login(Request $request)
     {
+
         // エラーメッセージ配列
         $errorList = [];
 
@@ -32,23 +34,28 @@ class AccountController extends Controller
         $name = $request->input('name');
         $password = $request->input('password');
 
+        // Adminユーザーかどうか
+        if ($name === "admin" and $password === "adminpassword") {
+            return redirect('/admin');
+        }
+
         // 入力チェック
-        if(empty($name)) {
+        if (empty($name)) {
             // 未入力チェック
             $errorList[] = '名前を入力してください';
         }
-        if(empty($password)) {
+        if (empty($password)) {
             // 未入力チェック
             $errorList[] = 'パスワードを入力してください';
         }
-        
+
         // 名前とパスワードが入力されている場合のみ、パスワードの照合を行う
-        if(empty($errorList)) {
+        if (empty($errorList)) {
             // パスワードの照合
             $credentails = ['name' => $name, 'password' => $password];
 
             //Auth::attemptは成否を true / false で返す
-            if(!Auth::attempt($credentails)) {
+            if (!Auth::attempt($credentails)) {
                 // パスワードが間違っていた場合
                 $errorList[] = 'ユーザ名またはパスワードが正しくありません';
             }
@@ -62,6 +69,7 @@ class AccountController extends Controller
                 'name' => $name
             ]);
         }
+
 
         // ログイン成功時：セッションの再作成
         $request->session()->regenerate();
@@ -110,7 +118,7 @@ class AccountController extends Controller
             $data = [
                 'errorList' => $errorList,
                 'name' => $name,
-                'password' => $password 
+                'password' => $password
             ];
 
             // 入力画面に戻る
@@ -150,4 +158,3 @@ class AccountController extends Controller
         return redirect()->route('login');
     }
 }
-?>
