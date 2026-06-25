@@ -99,7 +99,7 @@
                 <div class="content-header">
                     <div>対象商品数：<strong>{{count($products)}}</strong> アイテム</div>
                     <select class="sort-select">
-                        <option value="new" {{ $currentSort === "new" ? 'selected' : '' }}>新着順</option>
+                        <option value="new" {{ $currentSort === "new" ? 'selected' : '' }}>標準</option>
                         <option value="cheape" {{ $currentSort === "cheape" ? 'selected' : '' }}>価格が安い順</option>
                         <option value="expensive" {{ $currentSort === "expensive" ? 'selected' : '' }}>価格が高い順</option>
                     </select>
