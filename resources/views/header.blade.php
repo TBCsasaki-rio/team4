@@ -44,9 +44,6 @@
             font-weight: bold;
             cursor: pointer;
             border-radius: 8px;
-            transition: background-color 0.3s;
-            letter-spacing: 0.1rem;
-            box-shadow: 0 4px 12px rgba(135, 206, 250, 0.3);
         }
 
         .header-actions {
@@ -204,7 +201,7 @@
         <div class="mypage-wrapper" style="position: relative;">
             <button id="mypage-toggle" class="action-item">
                 <span class="action-icon">
-                    <img src="{{ asset('images/person.png') }}" alt="personLogo" style="max-width: 50px; height: 50px;">
+                    <img src="{{ asset('images/mypage.png') }}" alt="mypageLogo" style="max-width: 50px; height: 50px;">
                 </span>
             </button>
             <div id="mypage-box" class="mypage-dropdown">
