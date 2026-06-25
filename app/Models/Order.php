@@ -11,7 +11,7 @@ class Order extends Model
 
     public $timestamps = false;
 
-    public function orderItem()
+    public function orderItems()
     {
         return $this->hasMany(OrderItem::class);
     }

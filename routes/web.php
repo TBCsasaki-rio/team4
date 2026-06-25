@@ -52,7 +52,6 @@ Route::post('/orderComp', [MailController::class, 'complete']);
 // Admin Index
 Route::get('/admin', [AdminController::class, 'index']);
 Route::get('/admin/backyard', [AdminController::class, 'backyard']);
-Route::get('/admin/ordered', [AdminController::class, 'ordered']);
 // Admin 商品管理
 Route::get('/admin/backyard/add', [AdminController::class, 'productAdd']);
 Route::post('/admin/backyard/add', [AdminController::class, 'productInsert']);
@@ -62,4 +61,5 @@ Route::post('/admin/backyard/remove/{id}', [AdminController::class, 'productRemo
 Route::get('/admin/backyard/edit/{id}',[AdminController::class, 'productEdit'])->name('backyard.edit');
 Route::post('/admin/backyard/edit/{id}',[AdminController::class, 'productUpdate'])->name('backyard.update');
 // Admin オーダー
-Route::get('/admin/orderd/detail/{id}', [AdminController::class, 'orderedDetail'])->name('orderd.detail');
+Route::get('/admin/ordered', [AdminController::class, 'ordered']);
+Route::get('/admin/orderd/detail/{id}', [AdminController::class, 'orderedDetail'])->name('ordered.detail');

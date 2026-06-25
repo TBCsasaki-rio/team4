@@ -158,6 +158,9 @@ class AdminController extends Controller
 
     public function orderedDetail($id)
     {
-        return view('admin.orderd');
+        $order = Order::find($id);
+        $orderItems = $order->orderItems;
+
+        return view('admin.orderedDetail', compact('orderItems'));
     }
 }
