@@ -37,6 +37,17 @@
     color: #4a6fa5;
 }
 
+.search-price {
+    display: flex;
+    justify-content: flex-start;
+    text-align: left;
+}
+
+.search-price .span-text {
+    margin-left: 10px;
+    text-align: center;
+}
+
 /* 画面いっぱいに高さを確保する */
 .content-layout-wrapper {
     display: flex;
