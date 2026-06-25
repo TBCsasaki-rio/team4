@@ -1,71 +1,82 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sey You!!</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <title>カート</title>
+    <link rel="stylesheet" href="{{ asset('css/cart.css') }}">
 </head>
-<body class="bg-light">
 
-<div class="container my-5">
-    <h1 class="mb-4">カート</h1>
+<body>
+    @include('header')
+    <div class="cart">
+        <h1 class="tableTitle" style="color: #ff85a2;">カート</h1>
 
-    @if(session('success'))
-        <div class="alert alert-success mb-4">
+        @if(session('success'))
+        <div class="alertSuccess">
             {{ session('success') }}
         </div>
-    @endif
+        @endif
 
-    @if(empty($cart))
+        @if(empty($cart))
         <div class="card p-5 text-center">
-            <p class="fs-5 text-muted">カートは空です。</p>
+            <p class="nullMsg" style="font-weight: 700; font-size: 20px; color: red; margin-top: 0px; margin-bottom: 5px;">カートは空です</p>
+            <img src="{{ asset('images/nullCart.png') }}" alt="nullCartLogo" style="max-width: 250px; height:auto; margin-bottom:30px;">
             <div class="mt-3">
-                <a href="/" class="btn btn-primary">ショッピングを続ける</a>
+                <a href="/products" class="btn btn-primary">ショッピングを続ける</a>
             </div>
         </div>
-    @else
-        <div class="card shadow-sm p-4">
-            <table class="table table-hover align-middle">
+        @else
+        <div class="card shadow-sm p-4 table-responsive">
+            <table class="cartTable">
                 <thead class="table-dark">
                     <tr>
                         <th>商品名</th>
                         <th style="width: 15%;">価格</th>
                         <th style="width: 10%;">数量</th>
                         <th style="width: 15%;">小計</th>
-                        <th style="width: 10%;">操作</th>
+                        <th style="width: 10%;"></th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($cart as $id => $details)
-                        <tr>
-                            <td><strong>{{ $details['name'] }}</strong></td>
-                            <td>{{ number_format($details['price']) }}円</td>
-                            <td>{{ $details['quantity'] }}</td>
-                            <td>{{ number_format($details['price'] * $details['quantity']) }}円</td>
-                            <td>
-                                <form action="{{ route('cart.remove', $id) }}" method="POST" onsubmit="return confirm('本当に削除しますか？')">
-                                    @csrf
-                                    <button type="submit" class="btn btn-danger btn-sm">削除</button>
-                                </form>
+                    <tr>
+                        <td><strong>{{ $details['name'] }}</strong></td>
+                        <td>{{ number_format($details['price']) }}円</td>
+                        <td>{{ $details['quantity'] }}</td>
+                        <td>{{ number_format($details['price'] * $details['quantity']) }}円</td>
+                        <td>
+                            <form action="{{ route('cart.remove', ['id' => $id]) }}" method="POST" onsubmit="return confirm('本当に削除しますか？')">
+                                @csrf
+                                <button type="submit" class="deleteBtn">削除</button>
+                            </form>
+                        </td>
+                    </tr>
+                    @endforeach
+
+                    <tfoot>
+                        <tr class="total">
+                            <td colspan="5" class="text-center" style="border-top: 3px solid #d8ecff; border-bottom: none; background-color: #edf5ff; padding: 20px;">
+                                <h2 style="color: #2b6cb0; margin: 0; font-weight: bold;">合計金額：{{ number_format($total) }}円</h2>
                             </td>
                         </tr>
-                    @endforeach
+                    </tfoot>
                 </tbody>
             </table>
 
             <div class="d-flex justify-content-between align-items-center mt-4">
                 <div>
-                    <a href="/" class="btn btn-outline-secondary">買い物を続ける</a>
+                    <a href="/products" class="btn btn-outline-secondary">買い物を続ける</a>
                 </div>
+                <br>
                 <div class="text-end">
-                    <h3 class="mb-3">合計金額: <span class="text-danger">{{ number_format($total) }}円</span></h3>
-                    <a href="/checkout" class="btn btn-success btn-lg px-4">レジに進む</a>
+                    <a href="/order" class="btn btn-success btn-lg px-4">レジに進む</a>
                 </div>
             </div>
         </div>
-    @endif
-</div>
+        @endif
+    </div>
 
+    @include('footer')
 </body>
-</html>

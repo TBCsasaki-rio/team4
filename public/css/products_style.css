@@ -1,0 +1,214 @@
+.tab-wrapper {
+    width: 100%;
+    margin-top: 30px;
+}
+.categories {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 5px;
+    padding-left: 20px;
+    /* border-bottom: 2px solid #4a6fa5; */
+}
+.category {
+    border: 2px solid transparent;
+    border-radius: 5px 5px 0 0; /*上の角だけ丸くする*/
+    background-color: #f5f5f5;
+}
+.category a {
+    display: block;
+    padding: 10px 25px;
+    text-decoration: none;
+    color: #666;
+    font-weight: bold;
+}
+/* activeが付いていたら枠の下線を透明化して
+少し下にずらす（contentの枠線を隠すため） */
+.category.active {
+    background-color: #fff;
+    border-color: #4a6fa5;
+    border-bottom-color: transparent; 
+    /* 親要素のborderの真上に重ねるための設定 */
+    position: relative;
+    top: 2px;
+    z-index: 10;
+}
+.category.active a {
+    color: #4a6fa5;
+}
+
+.search-price {
+    display: flex;
+    justify-content: flex-start;
+    text-align: left;
+}
+
+.search-price .span-text {
+    margin-left: 10px;
+    text-align: center;
+}
+
+/* 画面いっぱいに高さを確保する */
+.content-layout-wrapper {
+    display: flex;
+    height: calc(100vh - 150px); /* ヘッダーやカテゴリ等の高さを引いた値 */
+    /* overflow: hidden;           親要素からはみ出さないようにする */
+}
+.sidebar {
+    position: sticky;
+    /* top: 20px; */
+    width: 250px;
+    margin-right: 20px;
+}
+
+.badge {
+    position: relative;
+    top: 8px;
+    right: 0px;
+    width: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.badge.top1 { 
+    background-color: #cc0000;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 3px 6px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+body {
+    /* FlexBoxを指定 */
+    display: flex;
+    /* コンテナ内のアイテムを並べる方向を指定 */
+    flex-direction: column;
+    /* ビューポート（ブラウザの表示領域）に応じた相対単位 */
+    min-height: 100vh;
+    /* background-color: #EFF0F7; */
+    /* ブロック内の要素の配置指定 */
+    text-align: center;
+    max-width: 1400vh;
+}
+
+
+.filter-label {
+    display: block;
+    text-align: left;
+    padding-left: 10px;
+}
+
+/* 広告 */
+.banner-area {
+    /* バーナーと絞り込みエリアとの間隔 */
+    margin-bottom: 30px;
+}
+
+.banner-area a {
+    display: block;
+    margin-bottom: 15px;
+    /* 角を丸くする */
+    border-radius: 4px;
+    /* boxからはみ出た場合の表示設定:非表示 */
+    overflow: hidden;
+    /* boxの影 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.main-content {
+    flex-grow: 1;
+    min-height: 110%;
+    overflow: auto;
+    margin-top: -3px;
+}
+
+/* 対象商品数・新着順等のプルダウン */
+.content-header {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 25px;
+}
+
+.sort-select {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.categories {
+    flex-direction: row;
+    gap: 10px;
+    padding: 0px;
+}
+
+.shopContents {
+    flex-grow: 1;
+    border: 2px solid #4a6fa5;
+}
+
+main {
+    /* スペースをどう割り振りするかの設定らしい、記事を参照して */
+    /* flex-grow: 1; と同じ意味*/
+    flex: 1;
+    background-color: #EFF0F7;
+    min-height: 50px;
+    /* 要素同士の間隔 */
+    padding: 20px;
+    /* 要素のサイズ(width,height)の調整にpaddingとborderを考慮させるか */
+    /* border-box: paddingとborderを幅と高さに含める */
+    box-sizing: border-box;
+}
+
+.product-list {
+    display: flex;
+    /* 複数行に折り返す設定 */
+    flex-wrap: wrap;
+    /* ボックス内要素の配置設定（右寄せやセンタリングなど） */
+    justify-content: flex-start;
+    /* 内側の余白 */
+    padding: 10px;
+    padding-top: 0px;
+    /* コンテナ内の要素間の隙間 */
+    gap: 10px;
+}
+
+/* オススメ商品 */
+.product {
+    /* 試しに無しでやってみる */
+    /* margin: 10px; */
+    text-align: center;
+    width: 200px;
+    box-sizing: border-box;
+    background: #fafafa;
+    border: 1px soild #fafafa;
+    padding: 10px;
+    border-radius: 6px;
+    margin-top: 10px;
+}
+
+.product-image {
+    /* 何に対しての割合？ */
+    max-width: 100%;
+    height: 150px;
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+}
+
+/* ひとつの商品 */
+.product-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+/* 商品一覧画面の商品一覧の枠組み */
+.main-content {
+    box-shadow: 0 0px 0px rgba(255, 255, 255, 0.8); /* 軽い影（立体感） */
+    background-color: #fff;
+}
+
+/* 一つの商品の枠組み */
+.product {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* 軽い影（立体感） */
+}
