@@ -35,7 +35,9 @@
                 {{$order->total_price}}
             </td>
             <td>
-                {{}}
+                <form action="{{route('order.detail', ['id' => $order->id]) }}" method="get">
+                    <button>詳細</button>
+                </form>
             </td>
         </tr>
         @endforeach
