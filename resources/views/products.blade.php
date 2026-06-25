@@ -54,7 +54,7 @@
 
             <div class="banner-area" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
                 <img src="{{ asset('images/recommend.png') }}" alt="recommendLogo" style="max-width: 230px; height:auto;">
-                <div class="product">
+                <div class="product" style="height: 255px;">
                     <div class="badge">
                         <span class="badge top1">TOP1</span>
                     </div>
@@ -107,7 +107,7 @@
                 <!-- 商品一覧 -->
                 <div class="product-list" id="product-list">
                     @foreach($products as $product)
-                    <div class="product" style="height: 300px;">
+                    <div class="product" style="height: 290px;">
                         <a href="/products/{{$product['id']}}">
                             <img
                                 src="/images/product_images/{{$product->mainImage->url}}"
@@ -115,7 +115,7 @@
                                 class="product-image">
                         </a>
                         <div class="product-details">
-                            <h2 style="margin: 10px;">{{$product['name']}}</h2>
+                            <h3 style="margin: 15px;">{{$product['name']}}</h3>
                             <p class="product-price" style="margin: 5px;">{{$product['price']}}円</p>
                         </div>
                     </div>
