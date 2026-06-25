@@ -29,26 +29,6 @@
     @include('header')
 
 
-    <!-- カテゴリ一覧 -->
-    <div class="tab-wrapper">
-        <div class="categories">
-
-            <div class="category {{ !request()->has('categoryId') ? 'active' : ''}}">
-                <a href="/products">全商品</a>
-            </div>
-
-            @foreach ($categories as $category)
-            <div class="category {{ request()->get('categoryId') == $category['id'] ? 'active' : ''}}">
-                <a href="/products?categoryId={{ $category['id'] }}"
-                    style="margin-right: 5px;">
-                    {{ $category['name'] }}
-                </a>
-            </div>
-            @endforeach
-        </div>
-    </div>
-
-
     <div class="content-layout-wrapper">
         <aside class="sidebar">
 
@@ -84,33 +64,54 @@
         </aside>
 
         <main class="main-content">
+            <!-- カテゴリ一覧 -->
+            <div class="tab-wrapper">
+                <div class="categories">
 
-            <div class="content-header">
-                <div>対象商品数：<strong>{{count($products)}}</strong> アイテム</div>
-                <select class="sort-select">
-                    <option value="new" {{ $currentSort === "new" ? 'selected' : '' }}>新着順</option>
-                    <option value="cheape" {{ $currentSort === "cheape" ? 'selected' : '' }}>価格が安い順</option>
-                    <option value="expensive" {{ $currentSort === "expensive" ? 'selected' : '' }}>価格が高い順</option>
-                </select>
-            </div>
-
-
-            <div class="product-list" id="product-list">
-                @foreach($products as $product)
-                <div class="product">
-                    <a href="/products/{{$product['id']}}">
-                        <img
-                            src="/images/product_images/{{$product->mainImage->url}}"
-                            alt="商品画像"
-                            class="product-image">
-                    </a>
-                    <div class="product-details">
-                        <h2>{{$product['name']}}</h2>
-                        <p class="product-price">{{$product['price']}}円</p>
+                    <div class="category {{ !request()->has('categoryId') ? 'active' : ''}}">
+                        <a href="/products">全商品</a>
                     </div>
+
+                    @foreach ($categories as $category)
+                    <div class="category {{ request()->get('categoryId') == $category['id'] ? 'active' : ''}}">
+                        <a href="/products?categoryId={{ $category['id'] }}"
+                            style="margin-right: 5px;">
+                            {{ $category['name'] }}
+                        </a>
+                    </div>
+                    @endforeach
                 </div>
-                @endforeach
             </div>
+
+            <div class="shopContents">
+                <div class="content-header">
+                    <div>対象商品数：<strong>{{count($products)}}</strong> アイテム</div>
+                    <select class="sort-select">
+                        <option value="new" {{ $currentSort === "new" ? 'selected' : '' }}>新着順</option>
+                        <option value="cheape" {{ $currentSort === "cheape" ? 'selected' : '' }}>価格が安い順</option>
+                        <option value="expensive" {{ $currentSort === "expensive" ? 'selected' : '' }}>価格が高い順</option>
+                    </select>
+                </div>
+
+
+                <div class="product-list" id="product-list">
+                    @foreach($products as $product)
+                    <div class="product">
+                        <a href="/products/{{$product['id']}}">
+                            <img
+                                src="/images/product_images/{{$product->mainImage->url}}"
+                                alt="商品画像"
+                                class="product-image">
+                        </a>
+                        <div class="product-details">
+                            <h2>{{$product['name']}}</h2>
+                            <p class="product-price">{{$product['price']}}円</p>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+            
         </main>
     </div>
 
