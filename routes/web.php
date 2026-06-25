@@ -4,6 +4,7 @@
 use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AccountController;   // ログイン・会員登録・ログアウト
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\MailController;
@@ -43,9 +44,16 @@ Route::post('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.
 
 // オーダー機能
 Route::get('/order', [OrderController::class, 'index']);
-
 Route::post('/order', [OrderController::class, 'order']);
 
 Route::get('/orderComp', [OrderController::class, 'orderComp']);
 Route::post('/orderComp', [MailController::class, 'complete']);
+
+// Admin機能
+Route::get('/admin', [AdminController::class, 'index']);
+Route::get('/admin/backyard', [AdminController::class, 'backyard']);
+Route::get('/admin/ordered', [AdminController::class, 'ordered']);
+
+Route::get('/admin/backyard/edit/{id}',[AdminController::class, 'productEdit'])->name('backyard.edit');
+Route::post('/admin/backyard/edit/{id}',[AdminController::class, 'productUpdate'])->name('backyard.update');
 

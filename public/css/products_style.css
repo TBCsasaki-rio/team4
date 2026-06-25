@@ -37,11 +37,20 @@
     color: #4a6fa5;
 }
 
+.sidebar {
+    position: sticky;
+    width: 250px;
+    margin-top: -60px;
+}
+
 .search-price {
     display: flex;
     justify-content: flex-start;
     text-align: left;
+    margin-left: 20px;
+    margin-bottom: 20px;
 }
+
 
 .search-price .span-text {
     margin-left: 10px;
@@ -53,12 +62,6 @@
     display: flex;
     height: calc(100vh - 150px); /* ヘッダーやカテゴリ等の高さを引いた値 */
     /* overflow: hidden;           親要素からはみ出さないようにする */
-}
-.sidebar {
-    position: sticky;
-    /* top: 20px; */
-    width: 250px;
-    margin-right: 20px;
 }
 
 .badge {

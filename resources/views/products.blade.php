@@ -27,15 +27,7 @@
 <body>
 
     @include('header')
-    <div class="search-price">
-        <form action="/products/searchPrice">
-            <span class="label-text">値段：<br></span>
-            <input name="minprice" value="{{old('minprice')}}" placeholder="下限"><br>
-            <span class="span-text">～<br></span>
-            <input name="maxprice" value="{{old('maxprice')}}" placeholder="上限"><br>
-            <button>検索</button>
-        </form>
-    </div>
+
 
     <!-- カテゴリ一覧 -->
     <div class="tab-wrapper">
@@ -59,6 +51,16 @@
 
     <div class="content-layout-wrapper">
         <aside class="sidebar">
+
+            <div class="search-price">
+                <form action="/products/searchPrice">
+                    <span class="label-text">値段で検索<br></span>
+                    <input name="minprice" value="{{old('minprice')}}" placeholder="下限"><br>
+                    <span class="span-text">～<br></span>
+                    <input name="maxprice" value="{{old('maxprice')}}" placeholder="上限"><br>
+                    <button>検索</button>
+                </form>
+            </div>
 
             <div class="banner-area" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
                 <img src="{{ asset('images/recommend.png') }}" alt="recommendLogo" style="max-width: 230px; height:auto;">
