@@ -37,13 +37,26 @@
     color: #4a6fa5;
 }
 
+.search-price {
+    display: flex;
+    justify-content: flex-start;
+    text-align: left;
+}
+
+.search-price .span-text {
+    margin-left: 10px;
+    text-align: center;
+}
+
 /* 画面いっぱいに高さを確保する */
 .content-layout-wrapper {
     display: flex;
     height: calc(100vh - 150px); /* ヘッダーやカテゴリ等の高さを引いた値 */
-    overflow: hidden;           /* 親要素からはみ出さないようにする */
+    /* overflow: hidden;           親要素からはみ出さないようにする */
 }
 .sidebar {
+    position: sticky;
+    /* top: 20px; */
     width: 250px;
     margin-right: 20px;
 }
@@ -103,6 +116,14 @@ body {
 }
 
 /* 対象商品数・新着順等のプルダウン */
+.main-content {
+    flex-grow: 1;
+    min-height: 110%;
+    overflow: auto;
+    margin-top: -3px;
+    border: 2px solid #4a6fa5;
+}
+
 .content-header {
     display: flex;
     justify-content: space-between;
