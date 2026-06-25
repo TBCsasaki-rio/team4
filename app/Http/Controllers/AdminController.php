@@ -57,7 +57,7 @@ class AdminController extends Controller
             $path = $filename;
             
             $product->save();
-            
+
             $product->productImages()->create([
                 'url' => $path,
                 'is_main' => true,
@@ -120,6 +120,32 @@ class AdminController extends Controller
 
         $product->save();
 
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+            $filename = time() . '_' . $image->getClientOriginalName();
+
+            $image->move(public_path('iamges/product_images'), $filename);
+            $newPath = 'images/product_images/' . $filename;
+
+            $oldImage = $product->mainImage;
+
+            if ($oldImage) {
+                $oldFilePath = public_path($oldImage->url);
+                if (file_exists($oldFilePath)) {
+                    unlink($oldFilePath);
+                }
+
+                $oldImage->update([
+                    'url' => $newPath,
+                ]);
+            } else {
+                $product->productImages()->create([
+                    'url' => $newPath,
+                    'is_main' => true,
+                ]);
+            }
+        }
+        
         return redirect('/admin');
     }
 
