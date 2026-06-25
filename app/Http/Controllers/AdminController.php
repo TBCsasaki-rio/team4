@@ -45,18 +45,18 @@ class AdminController extends Controller
         $product->name = $name;
         $product->price = $price;
 
-        
+        $product->save();
+
         if ($request->hasFile('image')) {
             $image = $request->file('image');
-            
+
             // 【修正】同名ファイルの衝突を防ぐため、ファイル名の先頭に現在のタイムスタンプを付与
             $filename = time() . '_' . $image->getClientOriginalName();
-            
+
             $image->move(public_path('images/product_images'), $filename);
-            
+
             $path = $filename;
-            
-            $product->save();
+
 
             $product->productImages()->create([
                 'url' => $path,
@@ -120,32 +120,32 @@ class AdminController extends Controller
 
         $product->save();
 
-        if($request->hasFile('image')){
+        if ($request->hasFile('image')) {
             $image = $request->file('image');
             $filename = time() . '_' . $image->getClientOriginalName();
 
-            $image->move(public_path('iamges/product_images'), $filename);
+            $image->move(public_path('images/product_images'), $filename);
             $newPath = 'images/product_images/' . $filename;
 
             $oldImage = $product->mainImage;
 
             if ($oldImage) {
-                $oldFilePath = public_path($oldImage->url);
+                $oldFilePath = public_path('images/product_images/'.$oldImage->url);
                 if (file_exists($oldFilePath)) {
                     unlink($oldFilePath);
                 }
-
+                
                 $oldImage->update([
-                    'url' => $newPath,
+                    'url' => $filename,
                 ]);
             } else {
                 $product->productImages()->create([
-                    'url' => $newPath,
+                    'url' => $filename,
                     'is_main' => true,
                 ]);
             }
         }
-        
+
         return redirect('/admin');
     }
 

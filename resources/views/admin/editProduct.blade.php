@@ -11,7 +11,7 @@
 <body>
     <h1>商品更新画面です</h1>
 
-    <form action="{{route('backyard.update' , ['id' => $product->id]) }}" method="post">
+    <form action="{{route('backyard.update' , ['id' => $product->id]) }}" method="post" enctype="multipart/form-data">
         @csrf
         <table>
             <tr>
