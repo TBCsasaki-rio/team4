@@ -37,18 +37,13 @@
     color: #4a6fa5;
 }
 
-.sidebar {
-    position: sticky;
-    width: 250px;
-    margin-top: -60px;
-}
-
 .search-price {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     text-align: left;
     margin-left: 20px;
     margin-bottom: 20px;
+    margin-top: 28px;
 }
 
 
@@ -57,11 +52,29 @@
     text-align: center;
 }
 
-/* 画面いっぱいに高さを確保する */
+/* 値段検索ボタン */
+.searchBtn {
+    margin-left: 10px;
+}
+
+/* 値段検索・オススメ商品・商品一覧 */
 .content-layout-wrapper {
-    display: flex;
-    height: calc(100vh - 150px); /* ヘッダーやカテゴリ等の高さを引いた値 */
-    /* overflow: hidden;           親要素からはみ出さないようにする */
+    display: flex;  /* 横並び */
+    align-items: flex-start; /* ★重要：これを入れないとstickyが効かない場合があります */
+    flex-direction: row;
+    height: calc(100vh - 100px);     /* 画面全体の高さからヘッダー（60px）とフッター（例: 40px）を引いた高さに設定 */
+    width: 100%;
+    overflow: hidden;   /* ここでもはみ出しをカット */
+}
+.sidebar {
+    position: sticky;   /* スクロール時に固定する指定 */
+    /* top: 20px; */
+    width: 250px;
+    margin-right: 20px;
+    flex-shrink: 0;          /* 画面が狭くなってもサイドバーが潰れないようにする */
+    height: auto;            /* 高さはコンテンツに合わせる */
+    overflow: auto;   /* 万が一サイドバーが画面より長くなったらここだけスクロール */
+    box-sizing: border-box;
 }
 
 .badge {
@@ -104,7 +117,11 @@ body {
 /* 広告 */
 .banner-area {
     /* バーナーと絞り込みエリアとの間隔 */
-    margin-bottom: 30px;
+    margin: 30px;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center;
 }
 
 .banner-area a {
@@ -120,9 +137,10 @@ body {
 
 .main-content {
     flex-grow: 1;
-    min-height: 110%;
-    overflow: auto;
-    margin-top: -3px;
+    height: 100%;
+    overflow-y: auto;   /* ★中身が溢れたら縦スクロールバーを出す */
+    padding-top: 0px;
+    box-sizing: border-box;
 }
 
 /* 対象商品数・新着順等のプルダウン */
