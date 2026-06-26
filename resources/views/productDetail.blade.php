@@ -35,7 +35,7 @@
 
             <div class="product-details">
                 <div class="detail-header">
-                    <h1 class="product-title">{{$product['name']}}</h1>
+                    <h2 class="product-title">{{$product['name']}}</h2>
                 </div>
                 <div class="product-price-area">
                     <span class="price-value">{{$product['price']}}円</span>

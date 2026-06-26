@@ -68,9 +68,10 @@ body {
 
 .product-image img {
     width: auto;
-    height: 380px;
+    height: 360px;
     display: block;
     transition: transform 0.3s ease;
+    margin: 15px;
 }
 
 .product-details {
@@ -84,12 +85,11 @@ body {
 
 .product-title {
     /* rem(root em): <html>のfontsizeを基準にした相対単位 */
-    font-size: 28px;
-    font-weight: 400;
+    font-weight: 600;
     line-height: 1.4;
     color: #222222;
     height: 50px;
-    margin-top: 5px;
+    margin-top: 13px;
 }
 
 .product-price-area {
