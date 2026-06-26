@@ -34,7 +34,7 @@ class OrderController extends Controller
             }
 
             $order_id = DB::table('orders')->insertGetId([
-                'user_id' => 1,
+                'user_id' => Auth::id() ?? 1,
                 'ordered_on' => now(),
                 'total_price' => $total
             ]);
@@ -46,31 +46,40 @@ class OrderController extends Controller
                     'quantity' => $item['quantity']
                 ]);
             }
-
             // ✅ セッションカート削除
             DB::commit();
+
+            $cartItems = [];
+            foreach ($cart as $product_id => $item) {
+                // 商品IDを使って products テーブルから商品情報を取得
+                $product = DB::table('products')->where('id', $product_id)->first();
+
+                $cartItems[] = [
+                    'name'     => $product ? $product->name : '商品名不明', // DBから名前を取得
+                    'price'    => $item['price'],
+                    'quantity' => $item['quantity'],
+                ];
+            }
+
+            // メール送信
+            $order = (object)[
+                'id' => $order_id,
+                'name' => $request->name,
+                'email' => $request->email,
+                'total' => $total,
+                'items' => $cartItems,
+            ];
+            Mail::to($order->email)
+                ->send(new OrderCompletedMail($order));
 
             session()->put('cart', []);
 
             session(['orderNumber' => $order_id]);
 
-            // メール送信
-            $order = (object)[
-                'id' => 1,
-                'name' => $request->name,
-                'email' => $request->email,
-                'total' => $total,
-                'items' => []
-            ];
-
-            Mail::to($order->email)
-                ->send(new OrderCompletedMail($order));
-
             return redirect('/orderComp');
-
         } catch (\Exception $e) {
             DB::rollBack();
-
+            dd($e->getMessage());
             return back()->withErrors(['error' => '注文処理に失敗']);
         }
     }
