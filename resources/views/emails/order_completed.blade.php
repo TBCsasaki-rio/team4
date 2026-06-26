@@ -3,6 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" href="{{ asset('images/home_logo.jpg') }}" type="image/jpeg">
+
 </head>
 
 <body>
