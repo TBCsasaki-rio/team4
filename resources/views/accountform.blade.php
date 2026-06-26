@@ -48,6 +48,8 @@
             </div>
 
         </main>
-        @include('footer')   
+           
     </div>
+    <br>
+    @include('footer')
 </body>

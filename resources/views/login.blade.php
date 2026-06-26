@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html>
+
 <head>
     <meta charset="UTF-8">
     <link rel="icon" href="{{ asset('images/titleLogo.jpg') }}" type="image/jpeg">
@@ -41,8 +44,9 @@
             <div style="text-align: center; margin-top: 20px;">
                 <a href="{{ route('register') }}">新規会員登録の方はこちら</a>
             </div>
-            
-        </main>   
-        @include('footer')
+        </main>  
     </div>
 </body>
+<br>
+@include('footer')
+</html>
