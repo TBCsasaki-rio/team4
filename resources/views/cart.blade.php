@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>カート</title>
+    <link rel="icon" href="{{ asset('images/home_logo.jpg') }}" type="image/jpeg">
     <link rel="stylesheet" href="{{ asset('css/cart.css') }}">
 </head>
 
